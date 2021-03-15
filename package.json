@@ -1,0 +1,30 @@
+{
+	"name": "matching-app",
+	"version": "1.0.0",
+	"description": "An app where users can meet other users based on movies and series interests.",
+	"main": "app.js",
+	"scripts": {
+		"test": "nodemon app.js",
+		"dev": "nodemon app.js",
+		"start": "node app.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/pmvdbijl7/matching-app.git"
+	},
+	"author": "Christiaan Braun, Aron Pelgrim, Joris Meester, Patrick van der Bijl",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/pmvdbijl7/matching-app/issues"
+	},
+	"homepage": "https://github.com/pmvdbijl7/matching-app#readme",
+	"devDependencies": {
+		"nodemon": "^2.0.7"
+	},
+	"dependencies": {
+		"dotenv": "^8.2.0",
+		"ejs": "^3.1.6",
+		"express": "^4.17.1",
+		"mongoose": "^5.12.0"
+	}
+}
