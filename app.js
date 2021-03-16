@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
 require('dotenv/config');
 
 // Get .env Variables
@@ -9,6 +10,7 @@ const hostPort = process.env.PORT || 3000;
 const dbConnection = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@buster.boqc9.mongodb.net/teamfeature?retryWrites=true&w=majority`;
 
 // Import Routes
+const authRoutes = require('./routes/authRoutes');
 const homeRoutes = require('./routes/homeRoutes');
 
 // Set Templating Engine
@@ -20,6 +22,7 @@ app.use(express.static('public'));
 // Middlewares
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser());
 
 // Connect to Database
 mongoose.connect(
@@ -36,6 +39,7 @@ mongoose.connect(
 );
 
 // Route Middlewares
+app.use(authRoutes);
 app.use(homeRoutes);
 
 // Show 404 Page if Page Doesn't Exists
