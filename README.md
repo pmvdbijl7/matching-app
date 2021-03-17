@@ -52,7 +52,7 @@ Below is an example of how the database structure looks like from the 'users' co
 | \_id | ObjectId | _jf308fdhg0ghg3_ |
 | name | String | _John_ |
 | gender | String | _Male_ |
-| birthdate | Date | _2000-03-0_ |
+| birthdate | Date | _2000-03-05_ |
 | residence | String | _London_ |
 | interested_in | String | _Women_ |
 | biography | String | _Hello, my name is John :)_ |
