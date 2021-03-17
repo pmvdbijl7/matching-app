@@ -49,10 +49,15 @@ Note: If you're using Linux Bash for Windows, [see this guide](https://www.howto
 Below is an example of how the database structure looks like from the 'users' collection.
 | **NAME** | **TYPE** | **VALUE** |
 |----------|----------|-----------|
-| _id | ObjectId | *jf308fdhg0ghg3* |
-| username | String | *testuser*|
-| email | String | _testuser@example.com_ |
-| password | String | _j90f3hag;/2hg3_ |
+| \_id | ObjectId | _jf308fdhg0ghg3_ |
+| name | String | _John_ |
+| gender | String | _Male_ |
+| birthdate | Date | _2000-03-0_ |
+| residence | String | _London_ |
+| interested_in | String | _Women_ |
+| biography | String | _Hello, my name is John :)_ |
+| email | String | *john@gmail.com* |
+| password | String | _j90f3hag;/2hfeag43gasdg3_ |
 | createdAt | Date | _2021-03-02T10:12:48.899+00:00_ |
 | updatedAt | Date | _2021-03-05T13:11:47.730+00:00_ |
 
