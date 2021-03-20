@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<%- include('../../partials/head'); %>
-	</head>
-
+<%- include('../../partials/head'); %>
 	<body>
+		<%- include('../../partials/header'); %>
 		<main>
 			<div class="auth-container">
 				<h1>Sign Up</h1>
@@ -24,14 +20,53 @@
 						<label for="password">Password</label>
 						<input type="password" name="password" id="password" />
 					</div>
-
-					<div class="form-group">
-						<button type="submit">Sign Up</button>
+					<div>
+						<p>Gender</p>
+						<%for(i=0; i < genders.length; i++){ %>
+							<div class="radio-group">
+								<input type="radio" id="<%= genders[i] %>" name="gender" value="<%= genders[i] %>">
+								<label for="<%= genders[i] %>">
+									<%= genders[i] %>
+								</label>
+							</div>
+							<% } %>
 					</div>
+					<div>
+						<label for="birthdate">Birthdate</label>
+						<input type="date" id="birthdate" name="birthdate" min="18" max="130" class="inline">
+					</div>
+					<div>
+						<label for="residence">Where do you live?</label>
+						<input type="search" id="residence" name="residence">
+					</div>
+					<div>
+						<p>Interested in</p>
+						<% for(i=0; i < interests.length; i++){ %>
+							<div class="radio-group">
+								<input type="radio" id="<%= interests[i] %>" name="interested_in" value="<%= interests[i] %>">
+								<label for="<%= interests[i] %>">
+									<%= interests[i] %>
+								</label>
+							</div>
+							<% } %>
+					</div>
+					<div>
+						<label for="fav_genres">What are your favorite genres?</label>
+						<input type="search" id="fav_genres" name="fav_genres">
+					</div>
+					<div>
+						<label for="fav_movies">What are your favorite movies?</label>
+						<input type="search" id="fav_movies" name="fav_movies">
+					</div>
+					<div>
+						<label for="fav_series">What are your favorite series?</label>
+						<input type="search" id="fav_series" name="fav_series">
+					</div>
+					<input type="submit" value="Create account">
 				</form>
 
 				<p>Already have an account? <a href="/signin">Sign In</a></p>
 			</div>
 		</main>
-	</body>
+		</body>
 </html>
