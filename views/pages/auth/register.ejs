@@ -20,7 +20,7 @@
 						<label for="password">Password</label>
 						<input type="password" name="password" id="password" />
 					</div>
-					<div>
+					<div class="form-group">
 						<p>Gender</p>
 						<%for(i=0; i < genders.length; i++){ %>
 							<div class="radio-group">
@@ -31,15 +31,15 @@
 							</div>
 							<% } %>
 					</div>
-					<div>
+					<div class="form-group">
 						<label for="birthdate">Birthdate</label>
 						<input type="date" id="birthdate" name="birthdate" min="18" max="130" class="inline">
 					</div>
-					<div>
+					<div class="form-group">
 						<label for="residence">Where do you live?</label>
 						<input type="search" id="residence" name="residence">
 					</div>
-					<div>
+					<div class="form-group">
 						<p>Interested in</p>
 						<% for(i=0; i < interests.length; i++){ %>
 							<div class="radio-group">
@@ -50,23 +50,35 @@
 							</div>
 							<% } %>
 					</div>
-					<div>
-						<label for="fav_genres">What are your favorite genres?</label>
-						<input type="search" id="fav_genres" name="fav_genres">
+					<div class="form-group">
+						<label for="biography">Biography</label>
+						<textarea id="biography" name="biography"></textarea>
 					</div>
-					<div>
-						<label for="fav_movies">What are your favorite movies?</label>
-						<input type="search" id="fav_movies" name="fav_movies">
+					<!-- <div class="form-group">
+						<label for="genres">What are your favorite genres?</label>
+						<select name="genres" id="genres" multiple>
+							<%// for(i=0; i < genres.length; i++){ %>
+								<option value="<%//= genres[i] %>">
+									<%//= genres[i] %>
+								</option>
+								<%// } %>
+						</select>
+					</div> 
+					<div id="movie-list" class="form-group">
+						<label for="movies">What are your favorite movies?</label>
+						<input type="search" id="movies" name="movies">
+						<button id="add-movie" type="button">+</button>
 					</div>
-					<div>
-						<label for="fav_series">What are your favorite series?</label>
-						<input type="search" id="fav_series" name="fav_series">
-					</div>
+					<div id="serie-list" class="form-group">
+						<label for="series">What are your favorite series?</label>
+						<input type="search" id="series" name="series">
+						<button id="add-serie" type="button">+</button>
+					</div> -->
 					<input type="submit" value="Create account">
 				</form>
-
 				<p>Already have an account? <a href="/signin">Sign In</a></p>
 			</div>
 		</main>
+		<script src="../js/script.js"></script>
 		</body>
 </html>

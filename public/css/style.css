@@ -33,13 +33,13 @@ label, form p {
 	color: steelblue;
 }
 
-input[type=text], input[type=password], input[type=number], input[type=search], input[type=submit], input[type=email], input[type=date], button, .button, select {
+input[type=text], input[type=password], input[type=number], input[type=search], input[type=submit], input[type=email], input[type=date], textarea, button, .button, select {
 	padding: .6rem 1rem;
 	font-size: inherit;
 	border-radius: 10px;
 }
 
-input[type=text], input[type=password], input[type=number], input[type=search], input[type=email], input[type=date], select {
+input[type=text], input[type=password], input[type=number], input[type=search], input[type=email], input[type=date], textarea, select {
 	border: 2px solid lightgrey;
 }
 
@@ -79,6 +79,10 @@ input[type=submit], .button {
 	margin-bottom: 20px;
 	text-decoration: none;
 	display: inline-block;
+}
+
+textarea{
+	width: 100%;
 }
 
 a.delete {

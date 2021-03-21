@@ -1,8 +1,41 @@
-
-		<%- include('../partials/head'); %>
+<% function getAge(dateString) {
+	if (typeof dateString != 'undefined') {
+	var today=new Date();
+	var birthDate=new Date(dateString);
+	var age=today.getFullYear() - birthDate.getFullYear();
+	var m=today.getMonth() - birthDate.getMonth();
+	if (m < 0 || (m===0 && today.getDate() < birthDate.getDate())) {
+		 age--; 
+		}
+		return '(' + age + ')';
+		}
+	} %>
+<%- include('../partials/head'); %>
 	<body>
 		<%- include('../partials/header'); %>
-		<main>
-		</main>
+			<main>
+				<% for(i=0; i < users.length; i++){ %>
+					<section class="account-item">
+						<a href="/user/<%= users[i]._id; %>">
+							<div>
+								<% if (users[i].picture){ %>
+									<img src="<%= users[i].picture %>" alt="profile picture of <%= users[i].name; %>">
+									<% } else { %>
+										<span class="material-icons">face</span>
+										<% } %>
+							</div>
+							<div>
+								<p>
+									<%= users[i].name; %> <%= getAge(users[i].birthdate); %>
+								</p>
+								<p>
+									<%= users[i].residence; %>
+								</p>
+							</div>
+						</a>
+					</section>
+					<% } %>
+			</main>
 	</body>
-</html>
+
+	</html>

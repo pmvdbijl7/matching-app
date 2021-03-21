@@ -30,7 +30,11 @@ const registerPost = async (req, res) => {
 		gender: req.body.gender,
 		birthdate: req.body.birthdate,
 		residence: req.body.residence,
-		interested_in: req.body.interested_in
+		interested_in: req.body.interested_in,
+		biography: req.body.biography,
+		//genres: req.body.genres,
+		//movies: req.body.movies,
+		//series: req.body.series
 	});
 
 	user.save()
