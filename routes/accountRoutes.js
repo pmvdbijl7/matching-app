@@ -11,6 +11,5 @@ router.post('/account/edit', verifyAccess, accountController.editPost);
 
 // Advanced account settings Route
 router.get('/account/advanced', verifyAccess, accountController.advancedGet);
-//router.post('/account/advanced', verifyAccess, accountController.advancedPost);
 
 module.exports = router;

@@ -5,6 +5,7 @@ const registerValidation = (data) => {
 		name: Joi.string().min(2).max(255).required(),
 		email: Joi.string().max(255).email().required(),
 		password: Joi.string().min(8).required(),
+		repeat_password: Joi.ref('password'),
 		gender: Joi.string().required(),
 		birthdate: Joi.date().required(),
 		residence: Joi.string().required(),
@@ -44,11 +45,19 @@ const editValidation = (data) => {
 	return schema.validate(data);
 };
 
-const passwordValidation = (data) => {
+// const passwordValidation = (data) => {
+// 	const schema = Joi.object({
+// 		old_password: Joi.string().min(8).required(),
+// 		new_password: Joi.string().min(8).required(),
+// 		repeated_new_password: Joi.string().min(8).required()
+// 	});
+
+// 	return schema.validate(data);
+// };
+
+const deleteValidation = (data) => {
 	const schema = Joi.object({
-		old_password: Joi.string().min(8).required(),
-		new_password: Joi.string().min(8).required(),
-		repeated_new_password: Joi.string().min(8).required()
+		password: Joi.string().min(8).required()
 	});
 
 	return schema.validate(data);
@@ -57,4 +66,4 @@ const passwordValidation = (data) => {
 module.exports.registerValidation = registerValidation;
 module.exports.loginValidation = loginValidation;
 module.exports.editValidation = editValidation;
-module.exports.passwordValidation = passwordValidation;
+//module.exports.passwordValidation = passwordValidation;
