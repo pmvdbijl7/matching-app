@@ -1,6 +1,6 @@
 const User = require('../models/User');
 const {
-    registerValidation,
+    registerValidation, editValidation,
 } = require('./validationController');
 
 // Get account profile page
@@ -25,7 +25,7 @@ const editGet = (req, res) => {
 const editPost = (req, res) => {
     const authUser = req.user._id;
 
-    const { error } = registerValidation(req.body);
+    const { error } = editValidation(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
     User.findByIdAndUpdate(authUser, req.body).then(() => {
