@@ -45,6 +45,15 @@ const editValidation = (data) => {
 	return schema.validate(data);
 };
 
+const deleteValidation = (data) => {
+	const schema = Joi.object({
+		password: Joi.string().min(8).required(),
+		repeat_password: Joi.ref('password')
+	});
+
+	return schema.validate(data);
+};
+
 // const passwordValidation = (data) => {
 // 	const schema = Joi.object({
 // 		old_password: Joi.string().min(8).required(),
@@ -55,15 +64,8 @@ const editValidation = (data) => {
 // 	return schema.validate(data);
 // };
 
-const deleteValidation = (data) => {
-	const schema = Joi.object({
-		password: Joi.string().min(8).required()
-	});
-
-	return schema.validate(data);
-};
-
 module.exports.registerValidation = registerValidation;
 module.exports.loginValidation = loginValidation;
 module.exports.editValidation = editValidation;
+module.exports.deleteValidation = deleteValidation;
 //module.exports.passwordValidation = passwordValidation;
