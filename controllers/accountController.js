@@ -8,7 +8,7 @@ const profileGet = (req, res) => {
     const authUser = req.user._id;
 
     User.findById(authUser).then((user) => {
-        res.render('pages/account/profile', { title: 'My profile', user: user.toJSON(), headerLeft: { path: '/', text: 'Back' }, headerRight: { path: '/account/edit', text: 'Edit' } });
+        res.render('pages/account/profile', { title: 'Your profile', user: user.toJSON(), headerLeft: { path: '/', text: 'Back' }, headerRight: { path: '/account/edit', text: 'Edit' } });
     });
 };
 
@@ -17,7 +17,7 @@ const editGet = (req, res) => {
     const authUser = req.user._id;
 
     User.findById(authUser).then((user) => {
-        res.render('pages/account/edit', { title: 'My profile', user: user.toJSON(), headerLeft: { path: '/account/profile', text: 'Back' }, headerRight: { path: '/account/advanced', text: 'Advanced' }, interests: ['Men', 'Women', 'Everyone'], genders: ['Male', 'Female', 'Non-binary'] });
+        res.render('pages/account/edit', { title: 'Edit your profile', user: user.toJSON(), headerLeft: { path: '/account/profile', text: 'Back' }, headerRight: { path: '/account/advanced', text: 'Advanced' }, interests: ['Men', 'Women', 'Everyone'], genders: ['Male', 'Female', 'Non-binary'] });
     });
 };
 
@@ -31,18 +31,48 @@ const editPost = (req, res) => {
     User.findByIdAndUpdate(authUser, req.body).then(() => {
         User.findOne({authUser}).then((result) => {
             res.redirect('/account/profile');
-        })
-    })
+        });
+    });
     if (req.body._id) {
         updateData(req, res);
     } else {
         console.log('Error: No or invalid profile id given. Profile id: ' + req.body._id)
     }
-}
+};
+
+// Get advanced account settings page
+const advancedGet = (req, res) => {
+    const authUser = req.user._id;
+
+    User.findById(authUser).then((user) => {
+        res.render('pages/account/advanced', { title: 'Advanced account settings', user: user.toJSON(), headerLeft: { path: '/account/profile', text: 'Back' }, headerRight: { path: '/account/advanced', text: 'Advanced' }, interests: ['Men', 'Women', 'Everyone'], genders: ['Male', 'Female', 'Non-binary'] });
+    });
+};
+
+// // Update advanced account data
+// const passwordPost = (req, res) => {
+//     const authUser = req.user._id;
+
+//     const { error } = passwordValidation(req.body);
+//     if (error) return res.status(400).send(error.details[0].message);
+
+//     User.findByIdAndUpdate(authUser, req.body).then(() => {
+//         User.findOne({ authUser }).then((result) => {
+//             res.redirect('/account/profile');
+//         });
+//     });
+//     if (req.body._id) {
+//         updateData(req, res);
+//     } else {
+//         console.log('Error: No or invalid profile id given. Profile id: ' + req.body._id)
+//     }
+// };
 
 
 module.exports = {
     profileGet,
     editGet,
-    editPost
+    editPost,
+    advancedGet,
+   // passwordPost
 };

@@ -2,11 +2,15 @@ const router = require('express').Router();
 const accountController = require('../controllers/accountController');
 const verifyAccess = require('../controllers/verifyAccessController');
 
-// My profile Route
+// Your profile Route
 router.get('/account/profile', verifyAccess, accountController.profileGet);
 
-// Edit profile Route
+// Edit your profile Route
 router.get('/account/edit', verifyAccess, accountController.editGet);
 router.post('/account/edit', verifyAccess, accountController.editPost);
+
+// Advanced account settings Route
+router.get('/account/advanced', verifyAccess, accountController.advancedGet);
+//router.post('/account/advanced', verifyAccess, accountController.advancedPost);
 
 module.exports = router;
