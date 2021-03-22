@@ -81,7 +81,7 @@ input[type=submit], .button {
 	display: inline-block;
 }
 
-textarea{
+textarea {
 	width: 100%;
 }
 
@@ -92,6 +92,7 @@ a.delete {
 section.account-item {
 	background-color: lightskyblue;
 	margin-bottom: 10px;
+	border-radius: 10px;
 }
 
 section.account-item>a {
@@ -114,7 +115,7 @@ section.account-item p {
 }
 
 section.account-item p:first-of-type {
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 }
 
 form>div {

@@ -1,3 +1,9 @@
 <header>
+    <% if (typeof headerLeft == 'object' && headerLeft){ %>
+        <a class="headerLeft" href="<%= headerLeft.path %>"><%= headerLeft.text %></a>
+    <% } %>
     <h1><%=title%></h1>
+    <% if (typeof headerRight == 'object' && headerRight){ %>
+        <a class="headerRight" href="<%= headerRight.path %>"><%= headerRight.text %></a>
+    <% } %>
 </header>
