@@ -1,0 +1,93 @@
+label, form p {
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: steelblue;
+}
+
+input {
+    padding: .6rem 1rem;
+    font-size: inherit;
+    border-radius: 10px;
+}
+
+input[type=text], input[type=password], input[type=number], input[type=search], input[type=email], input[type=date], textarea, select {
+    border: 2px solid lightgrey;
+}
+
+.radio-group {
+    display: flex;
+    label {
+    line-height: 1.5rem;
+    color: black;
+    }
+}
+
+input[type=radio] {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+input[type=text], form>div>label {
+    display: block;
+}
+
+input[type=number] {
+    max-width: 100px;
+}
+
+input[type=submit], button, .button {
+    font-weight: bold;
+    border: none;
+    color: white;
+    background-color: lightblue;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+textarea {
+    width: 100%;
+}
+
+a.delete {
+    background-color: lightpink;
+}
+
+section.account-item {
+    background-color: lightskyblue;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    a {
+        display: flex;
+        text-decoration: none;
+        padding: 10px;
+        color: black;
+        span {
+            font-size: 50px;
+            div:first-of-type {
+                margin-right: 10px;
+            }
+            p {
+                margin: 0;
+                p:first-of-type {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+}
+
+form div {
+    padding-bottom: 25px;
+}
+
+.inline {
+    display: inline;
+}
+
+.red-text {
+    color: red;
+}
