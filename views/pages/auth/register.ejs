@@ -8,29 +8,29 @@
 				<form action="/signup" method="POST">
 					<div class="form-group">
 						<label for="name">Name</label>
-						<input type="text" name="name" id="name" />
+						<input type="text" name="name" id="name" required/>
 					</div>
 
 					<div class="form-group">
 						<label for="email">Email Address</label>
-						<input type="email" name="email" id="email" />
+						<input type="email" name="email" id="email" required/>
 					</div>
 
 					<div class="form-group">
 						<label for="password">Password</label>
-						<input type="password" name="password" id="password" />
+						<input type="password" name="password" id="password" required/>
 					</div>
 
 					<div class="form-group">
 						<label for="repeat_password">Repeat your password</label>
-						<input type="password" name="repeat_password" id="repeat_password" />
+						<input type="password" name="repeat_password" id="repeat_password" required/>
 					</div>
 
 					<div class="form-group">
 						<p>Gender</p>
 						<%for(i=0; i < genders.length; i++){ %>
 							<div class="radio-group">
-								<input type="radio" id="<%= genders[i] %>" name="gender" value="<%= genders[i] %>">
+								<input type="radio" id="<%= genders[i] %>" name="gender" value="<%= genders[i] %>" required>
 								<label for="<%= genders[i] %>">
 									<%= genders[i] %>
 								</label>
@@ -39,17 +39,17 @@
 					</div>
 					<div class="form-group">
 						<label for="birthdate">Birthdate</label>
-						<input type="date" id="birthdate" name="birthdate" min="18" max="130" class="inline">
+						<input type="date" id="birthdate" name="birthdate" min="18" max="130" class="inline" required>
 					</div>
 					<div class="form-group">
 						<label for="residence">Where do you live?</label>
-						<input type="search" id="residence" name="residence">
+						<input type="search" id="residence" name="residence" required>
 					</div>
 					<div class="form-group">
 						<p>Interested in</p>
 						<% for(i=0; i < interests.length; i++){ %>
 							<div class="radio-group">
-								<input type="radio" id="<%= interests[i] %>" name="interested_in" value="<%= interests[i] %>">
+								<input type="radio" id="<%= interests[i] %>" name="interested_in" value="<%= interests[i] %>" required>
 								<label for="<%= interests[i] %>">
 									<%= interests[i] %>
 								</label>
@@ -58,7 +58,7 @@
 					</div>
 					<div class="form-group">
 						<label for="biography">Biography</label>
-						<textarea id="biography" name="biography"></textarea>
+						<textarea id="biography" name="biography" required></textarea>
 					</div>
 					<!-- <div class="form-group">
 						<label for="genres">What are your favorite genres?</label>
