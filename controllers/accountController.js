@@ -85,15 +85,15 @@ const editPasswordPost = async (req, res) => {
     // Check if Password is Correct
     const user = await User.findById(authUser).exec();
     const validPass = await bcrypt.compare(req.body.password, user.password);
+    if (!validPass) return res.status(400).send('Your password isn\'t valid.');
 
     // Hash new password
     const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(req.body.new_password, salt);
+    const hashedNewPassword = await bcrypt.hash(req.body.new_password, salt);
 
     console.log(req.body.password, req.body.new_password, req.body.repeat_new_password)
    
-    if (!validPass) return res.status(400).send('Your password isn\'t valid.');
-    objectWithNewPassword = { password: hashedPassword};
+    objectWithNewPassword = { password: hashedNewPassword};
     User.findByIdAndUpdate(authUser, objectWithNewPassword).then(() => {
         User.findOne({ authUser }).then((result) => {
             res.redirect('/account/profile');
