@@ -1,32 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<%- include('../../partials/head'); %>
-	</head>
+<%- include('../../partials/head'); %>
 
 	<body>
-		<main>
-			<div class="auth-container">
-				<h1>Sign In</h1>
+		<%- include('../../partials/header'); %>
+			<main>
+				<div class="auth-container">
+					<h1>Login</h1>
 
-				<form action="/signin" method="POST">
-					<div class="form-group">
-						<label for="email">Email Address</label>
-						<input type="email" name="email" id="email" />
-					</div>
+					<form action="/signin" method="POST">
+						<div class="form-group">
+							<label for="email">Email Address</label>
+							<input type="email" name="email" id="email" />
+						</div>
 
-					<div class="form-group">
-						<label for="password">Password</label>
-						<input type="password" name="password" id="password" />
-					</div>
+						<div class="form-group">
+							<label for="password">Password</label>
+							<input type="password" name="password" id="password" />
+						</div>
 
-					<div class="form-group">
-						<button type="submit">Sign In</button>
-					</div>
-				</form>
+						<div class="form-group">
+							<input type="submit" value="Login">
+						</div>
+					</form>
 
-				<p>Don't have an account yet? <a href="/signup">Sign Up</a></p>
-			</div>
-		</main>
+					<p>Don't have an account yet? <a href="/signup">Sign up</a></p>
+				</div>
+			</main>
 	</body>
-</html>
+
+	</html>

@@ -9,7 +9,7 @@ require('dotenv/config');
 
 // Get Register Page
 const registerGet = (req, res) => {
-	res.render('pages/auth/register', { title: 'Sign Up' });
+	res.render('pages/auth/register', { title: 'Sign up', interests: ['Men', 'Women', 'Everyone'], genders: ['Male', 'Female', 'Non-binary'] });
 };
 
 // Register New User
@@ -27,6 +27,14 @@ const registerPost = async (req, res) => {
 		name: req.body.name,
 		email: req.body.email,
 		password: hashedPassword,
+		gender: req.body.gender,
+		birthdate: req.body.birthdate,
+		residence: req.body.residence,
+		interested_in: req.body.interested_in,
+		biography: req.body.biography,
+		//genres: req.body.genres,
+		//movies: req.body.movies,
+		//series: req.body.series
 	});
 
 	user.save()
@@ -48,7 +56,7 @@ const registerPost = async (req, res) => {
 
 // Get Login Page
 const loginGet = (req, res) => {
-	res.render('pages/auth/login', { title: 'Sign In' });
+	res.render('pages/auth/login', { title: 'Log in' });
 };
 
 // Login User

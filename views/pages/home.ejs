@@ -1,18 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<%- include('../partials/head'); %>
-	</head>
-
+<% function getAge(dateString) {
+	if (typeof dateString != 'undefined') {
+	var today=new Date();
+	var birthDate=new Date(dateString);
+	var age=today.getFullYear() - birthDate.getFullYear();
+	var m=today.getMonth() - birthDate.getMonth();
+	if (m < 0 || (m===0 && today.getDate() < birthDate.getDate())) {
+		 age--; 
+		}
+		return '(' + age + ')';
+		}
+	} %>
+<%- include('../partials/head'); %>
 	<body>
-		<header><%- include('../partials/header'); %></header>
-
-		<main>
-			<h1>Home</h1>
-		</main>
-
-		<footer><%- include('../partials/footer'); %></footer>
-
-		<%- include('../partials/scripts'); %>
+		<%- include('../partials/header'); %>
+			<main>
+				<% for(i=0; i < users.length; i++){ %>
+					<section class="account-item">
+						<a href="/user/<%= users[i]._id; %>">
+							<div>
+								<% if (users[i].picture){ %>
+									<img src="<%= users[i].picture %>" alt="profile picture of <%= users[i].name; %>">
+									<% } else { %>
+										<span class="material-icons">account_circle</span>
+										<% } %>
+							</div>
+							<div>
+								<p>
+									<%= users[i].name; %> <%= getAge(users[i].birthdate); %>
+								</p>
+								<p>
+									<%= users[i].residence; %>
+								</p>
+							</div>
+						</a>
+					</section>
+					<% } %>
+			</main>
 	</body>
-</html>
+
+	</html>
