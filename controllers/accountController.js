@@ -19,7 +19,8 @@ const editGet = (req, res) => {
 
     User.findById(authUser).then((user) => {
         res.render('pages/account/edit', {
-            title: 'Edit your profile', user: user.toJSON(), headerLeft: { path: '/account/profile', text: 'Back' }, optionsRight: [{ path: '/account/edit-password', text: 'Edit password' }, { path: '/account/delete', text: 'Delete account' }], interests: ['Men', 'Women', 'Everyone'], genders: ['Male', 'Female', 'Non-binary'] });
+            title: 'Edit your profile', user: user.toJSON(), headerLeft: { path: '/account/profile', text: 'Back' }, optionsRight: [{ path: '/account/edit-password', text: 'Edit password' }, { path: '/account/delete', text: 'Delete account' }], interests: ['Men', 'Women', 'Everyone'], genders: ['Male', 'Female', 'Non-binary']
+        });
     });
 };
 
@@ -62,9 +63,9 @@ const deletePost = async (req, res) => {
         if (!error) {
             res.redirect('/logout');
         } else {
-        console.log('Error: No or invalid profile id given. Profile id: ' + req.body._id)
-    }
-});
+            console.log('Error: No or invalid profile id given. Profile id: ' + req.body._id)
+        }
+    });
 };
 
 // Get edit password page
@@ -91,9 +92,7 @@ const editPasswordPost = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedNewPassword = await bcrypt.hash(req.body.new_password, salt);
 
-    console.log(req.body.password, req.body.new_password, req.body.repeat_new_password)
-   
-    objectWithNewPassword = { password: hashedNewPassword};
+    objectWithNewPassword = { password: hashedNewPassword };
     User.findByIdAndUpdate(authUser, objectWithNewPassword).then(() => {
         User.findOne({ authUser }).then((result) => {
             res.redirect('/account/profile');
