@@ -19,4 +19,8 @@ router.post(
 router.get('/account/delete', verifyAccess, accountController.deleteGet);
 router.post('/account/delete', verifyAccess, accountController.deletePost);
 
+// Change password Routes
+router.get('/account/edit-password', verifyAccess, accountController.editPasswordGet);
+router.post('/account/edit-password', verifyAccess, accountController.editPasswordPost);
+
 module.exports = router;
