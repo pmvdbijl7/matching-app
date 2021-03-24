@@ -9,19 +9,19 @@
                     <form action="/account/edit" method="POST">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" name="name" id="name" value="<%= user.name %>" />
+                            <input type="text" name="name" id="name" value="<%= user.name %>" required/>
                         </div>
 
                         <div class="form-group">
                             <label for="email">Email Address</label>
-                            <input type="email" name="email" id="email" value="<%= user.email %>" />
+                            <input type="email" name="email" id="email" value="<%= user.email %>" required/>
                         </div>
 
                         <div class="form-group">
                             <p>Gender</p>
                             <%for(i=0; i < genders.length; i++){ %>
                                 <div class="radio-group">
-                                    <input type="radio" id="<%= genders[i] %>" name="gender" value="<%= genders[i] %>" <% if (user.gender==genders[i]){ %> checked <% } %>>
+                                    <input type="radio" id="<%= genders[i] %>" name="gender" value="<%= genders[i] %>" <% if (user.gender == genders[i]){ %> checked <% } %> required>
                                     <label for="<%= genders[i] %>">
                                         <%= genders[i] %>
                                     </label>
@@ -30,7 +30,7 @@
                         </div>
                         <div class="form-group">
                             <label for="birthdate">Birthdate</label>
-                            <input type="date" id="birthdate" name="birthdate" min="18" max="130" class="inline" value="<%= user.birthdate.toISOString().substr(0, 10);%>">
+                            <input type="date" id="birthdate" name="birthdate" min="18" max="130" class="inline" value="<%= user.birthdate.toISOString().substr(0, 10); %>" required>
                         </div>
                         <div class="form-group">
                             <label for="residence">Where do you live?</label>
@@ -40,7 +40,7 @@
                             <p>Interested in</p>
                             <% for(i=0; i < interests.length; i++){ %>
                                 <div class="radio-group">
-                                    <input type="radio" id="<%= interests[i] %>" name="interested_in" value="<%= interests[i] %>" <% if (user.interested_in==interests[i]){ %> checked <% } %>>
+                                    <input type="radio" id="<%= interests[i] %>" name="interested_in" value="<%= interests[i] %>" <% if (user.interested_in == interests[i]){ %> checked <% } %> required>
                                     <label for="<%= interests[i] %>">
                                         <%= interests[i] %>
                                     </label>
@@ -49,7 +49,7 @@
                         </div>
                         <div class="form-group">
                             <label for="biography">Biography</label>
-                            <textarea id="biography" name="biography"><%= user.biography %></textarea>
+                            <textarea id="biography" name="biography" required><%= user.biography %></textarea>
                         </div>
                         <!-- <div class="form-group">
 						<label for="genres">What are your favorite genres?</label>
