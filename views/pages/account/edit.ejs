@@ -6,7 +6,18 @@
                 <div class="auth-container">
                     <h1>Edit</h1>
 
-                    <form action="/account/edit" method="POST">
+                    <form action="/account/edit" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="profile_image">
+                                <% if (user.profile_image) { %>
+                                    <img src="/uploads/<%= user.profile_image %>" alt="Profile image" width="100">
+                                <% } else { %>
+                                    <img src="/images/default_profile_image.jpg" alt="Profile image" width="100">
+                                <% } %>
+                            </label>
+                            <input type="file" name="profile_image" id="profile_image" accept="image/*" value="<%= user.profile_image %>">
+                        </div>
+
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" name="name" id="name" value="<%= user.name %>" />
