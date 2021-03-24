@@ -37,10 +37,12 @@ const userSchema = new mongoose.Schema(
       minLength: 8,
       required: true,
     },
-    movies: {
-      type: String,
-      required: true,
-    },
+    movies: [
+      {
+        type: String,
+        required: true,
+      },
+    ],
     posters: [
       {
         type: String,
