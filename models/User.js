@@ -37,6 +37,10 @@ const userSchema = new mongoose.Schema(
 			minLength: 8,
 			required: true,
 		},
+		profile_image: {
+			data: Buffer,
+			type: String,
+		},
 		genres: [
 			{
 				type: mongoose.Schema.Types.ObjectId,
