@@ -6,6 +6,7 @@ const {
   registerValidation,
   loginValidation,
 } = require('./validationController');
+const Movie = require('../models/Movie');
 require('dotenv/config');
 
 // Get Register Page
@@ -42,17 +43,19 @@ const registerPost = async (req, res) => {
     //series: req.body.series,
   });
 
-  let posters = await axios({
-    method: 'GET',
-    url: `http://www.omdbapi.com/?apikey=${process.env.API_KEY}&t=${req.body.movies}`,
-  })
-    .then((res) => {
-      const poster = res.data.Poster;
-      user.posters = poster;
+  user.movies.forEach(async (movie) => {
+    let posters = await axios({
+      method: 'GET',
+      url: `http://www.omdbapi.com/?apikey=${process.env.API_KEY}&t=${movie}`,
     })
-    .catch((err) => {
-      console.log('error', err);
-    });
+      .then((res) => {
+        console.log(res.data.Poster);
+        user.posters = res.data.Poster;
+      })
+      .catch((err) => {
+        console.log('error', err);
+      });
+  });
 
   user
     .save()

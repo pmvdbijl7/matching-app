@@ -56,10 +56,10 @@ const userSchema = new mongoose.Schema(
       },
     ],
     // movies: [
-    // 	{
-    // 		type: mongoose.Schema.Types.ObjectId,
-    // 		ref: 'Movie',
-    // 	},
+    //   {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'Movie',
+    //   },
     // ],
     series: [
       {
