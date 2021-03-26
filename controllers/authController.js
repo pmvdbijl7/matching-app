@@ -6,10 +6,40 @@ const {
 	loginValidation,
 } = require('./validationController');
 require('dotenv/config');
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+// Setup Google Auth
+passport.serializeUser((user, done) => {
+	done(null, user.id);
+});
+
+passport.deserializeUser((user, done) => {
+	done(null, user);
+});
+
+passport.use(
+	new GoogleStrategy(
+		{
+			clientID:
+				'540353050143-phakl2qnuft1uun0ff9hqki4l254h3d8.apps.googleusercontent.com',
+			clientSecret: '__-FlHMDpmAcOGYr0PlLJAFR',
+			callbackURL: 'http://localhost:3000/google/callback',
+		},
+		(accessToken, refreshToken, profile, cb) => {
+			console.log(profile);
+			cb(null, profile);
+		}
+	)
+);
 
 // Get Register Page
 const registerGet = (req, res) => {
-	res.render('pages/auth/register', { title: 'Sign up', interests: ['Men', 'Women', 'Everyone'], genders: ['Male', 'Female', 'Non-binary'] });
+	res.render('pages/auth/register', {
+		title: 'Sign up',
+		interests: ['Men', 'Women', 'Everyone'],
+		genders: ['Male', 'Female', 'Non-binary'],
+	});
 };
 
 // Register New User
@@ -54,6 +84,12 @@ const registerPost = async (req, res) => {
 		});
 };
 
+// Google Callback
+const googleCb = (req, res) => {
+	// Redirect to Home
+	res.redirect('/');
+};
+
 // Get Login Page
 const loginGet = (req, res) => {
 	res.render('pages/auth/login', { title: 'Log in' });
@@ -90,6 +126,7 @@ const logout = (req, res) => {
 module.exports = {
 	registerGet,
 	registerPost,
+	googleCb,
 	loginGet,
 	loginPost,
 	logout,

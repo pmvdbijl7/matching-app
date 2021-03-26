@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 require('dotenv/config');
+const passport = require('passport');
 
 // Get .env Variables
 const hostURL = process.env.URL;
@@ -24,6 +25,7 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
+app.use(passport.initialize());
 
 // Connect to Database
 mongoose.connect(
@@ -42,7 +44,7 @@ mongoose.connect(
 // Route Middlewares
 app.use(authRoutes);
 app.use(homeRoutes);
-app.use(accountRoutes)
+app.use(accountRoutes);
 
 // Show 404 Page if Page Doesn't Exists
 app.use((req, res, next) => {
