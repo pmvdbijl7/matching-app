@@ -2,9 +2,12 @@
 	<%- include('../partials/head'); %>
 
 		<body>
-			<%- include('../partials/header'); %>
-				<main>
-					<% for(i=0; i < users.length; i++){ %>
+			<%- include('../partials/header');%>
+			<main>
+				<h2>Matches</h2>
+				<p>If you like someone and they like you back, you have a match! These are your matches:</p>
+				<% for(i=0; i < users.length; i++) { %>
+					<% if (user._id.toString() != users[i]._id && users[i].liked_profiles.includes(user._id.toString()) && user.liked_profiles.includes(users[i]._id.toString())) {%>
 						<section class="account-item">
 							<a href="/user/profile/<%= users[i]._id; %>">
 								<div>
@@ -19,14 +22,12 @@
 										<%= users[i].name; %>
 										<%= getAge(users[i].birthdate); %>
 									</p>
-									<p>
-										<%= users[i].residence; %>
-									</p>
+									<p><%= users[i].residence; %></p>
 								</div>
 							</a>
 						</section>
-						<% } %>
-				</main>
+					<% } %>
+				<% } %>
+			</main>
 		</body>
-
-		</html>
+	</html>

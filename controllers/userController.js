@@ -1,11 +1,16 @@
 const User = require('../models/User');
 
-const profileGet = async (req, res) => {
-    const selectedProfile = await User.findById(req.params.id);
-    res.render('pages/user/profile', {
-        title: 'Profile',
-        profile: selectedProfile
-    })
+const profileGet = (req, res) => {
+    const authUser = req.user._id;
+
+    User.findById(authUser).then(async (user) => {
+        const selectedProfile = await User.findById(req.params.id);
+        res.render('pages/user/profile', {
+            title: 'Profile',
+            user: user.toJSON(),
+            profile: selectedProfile
+        });
+    });
 };
 
 const profileLikePost = (req, res) => {
@@ -14,11 +19,27 @@ const profileLikePost = (req, res) => {
     const profileId = req.body.profile_id;
     User.findByIdAndUpdate(
         authUser,
-        { $push: { liked_profiles: profileId } },
+        { $addToSet: { liked_profiles: profileId } },
         { safe: true, upsert: true, new: true },
         function (err, result) {
-            if (err){
-            console.log(err);
+            if (err) {
+                console.log(err);
+            }
+        }
+    );
+};
+
+const profileUnlikePost = (req, res) => {
+    const authUser = req.user._id;
+
+    const profileId = req.body.profile_id;
+    User.findByIdAndUpdate(
+        authUser,
+        { $pull: { liked_profiles: profileId } },
+        { safe: true, upsert: true, new: true },
+        function (err, result) {
+            if (err) {
+                console.log(err);
             }
         }
     );
@@ -27,5 +48,6 @@ const profileLikePost = (req, res) => {
 
 module.exports = {
     profileGet,
-    profileLikePost
+    profileLikePost,
+    profileUnlikePost
 };
