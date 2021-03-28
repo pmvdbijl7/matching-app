@@ -15,6 +15,7 @@ const authRoutes = require('./routes/authRoutes');
 const matchesRoutes = require('./routes/matchesRoutes');
 const homeRoutes = require('./routes/homeRoutes');
 const userRoutes = require('./routes/userRoutes');
+const filterRoutes = require('./routes/filterRoutes');
 
 // Set Templating Engine
 app.set('view engine', 'ejs');
@@ -47,6 +48,7 @@ app.use(authRoutes);
 app.use(matchesRoutes);
 app.use(homeRoutes);
 app.use(userRoutes);
+app.use(filterRoutes);
 
 // Show 404 Page if Page Doesn't Exists
 app.use((req, res, next) => {
