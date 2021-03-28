@@ -7,6 +7,7 @@ const {
   loginValidation,
 } = require('./validationController');
 const Movie = require('../models/Movie');
+const { resolveInclude } = require('ejs');
 require('dotenv/config');
 
 // Get Register Page
@@ -20,6 +21,34 @@ const registerGet = (req, res) => {
 
 // Register New User
 const registerPost = async (req, res) => {
+  // Maak asynch functie met forEach loop
+  // Zet onder functie let data = await functieNaam
+
+  let movieArray = [];
+
+  async function getMoviePosters() {
+    req.body.movies.forEach(async (movie) => {
+      let posters = await axios({
+        method: 'GET',
+        url: `http://www.omdbapi.com/?apikey=${process.env.API_KEY}&t=${movie}`,
+      })
+        .then((res) => {
+          console.log(res.data.Poster);
+          movieArray.push(res.data.Poster);
+          console.log(movieArray);
+        })
+        .catch((err) => {
+          console.log('error', err);
+        });
+    });
+  }
+
+  async function fillMovieArray() {
+    let data = await getMoviePosters();
+  }
+
+  fillMovieArray();
+
   // Validate Register Data
   const { error } = registerValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);
@@ -28,7 +57,6 @@ const registerPost = async (req, res) => {
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
-  // Create New User
   const user = new User({
     name: req.body.name,
     email: req.body.email,
@@ -40,24 +68,13 @@ const registerPost = async (req, res) => {
     biography: req.body.biography,
     //genres: req.body.genres,
     movies: req.body.movies,
+    posters: movieArray,
     //series: req.body.series,
   });
 
-  user.movies.forEach(async (movie) => {
-    let posters = await axios({
-      method: 'GET',
-      url: `http://www.omdbapi.com/?apikey=${process.env.API_KEY}&t=${movie}`,
-    })
-      .then((res) => {
-        console.log(res.data.Poster);
-        user.posters = res.data.Poster;
-      })
-      .catch((err) => {
-        console.log('error', err);
-      });
-  });
+  console.log(user);
 
-  user
+  await user
     .save()
     .then((result) => {
       // Create accessToken and Assign to Cookie

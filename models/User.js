@@ -45,8 +45,8 @@ const userSchema = new mongoose.Schema(
     ],
     posters: [
       {
-        type: String,
-        required: false,
+        type: Array,
+        required: true,
       },
     ],
     genres: [

@@ -13,7 +13,7 @@ const registerValidation = (data) => {
     biography: Joi.string().max(1024),
     // genres: Joi.array().items(Joi.string()),
     movies: Joi.array(),
-    posters: Joi.array(),
+    posters: Joi.string(),
     // series: Joi.array().items(Joi.string())
   });
 
