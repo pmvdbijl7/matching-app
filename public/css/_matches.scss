@@ -1,23 +1,18 @@
 @import "./variables";
 
-.home {
+.matches {
     background-color: $mainDark;
     margin-bottom: -10px;
     min-height: 100vh;
-}
-
-form {
-    padding-top: 100px;
-    margin-bottom: 30px;
-    fieldset {
-        border: none;
+    h2 {
+        padding-top: 90px;
         margin-bottom: 20px;
-        font-size: 1.2em;
+        font-size: 1.8em;
         font-weight: 600;
         color: white;
     }
-    input[type=submit] {
-        margin-bottom: -3px;
+    p {
+        color: white;
     }
 }
 

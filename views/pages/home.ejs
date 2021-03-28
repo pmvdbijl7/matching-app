@@ -15,12 +15,13 @@
         <%- include('../partials/header'); %>
             <main class="home"> 
                 <form method="POST" action="/filter/">
+                    <fieldset>Gender preferences</fieldset>
                     <select name="gender" id="gender">
                         <option name="Male" value="Male">Male</option>
                         <option name="Female" value="Female">Female</option>
                         <option name="Non-binary" value="Non-binary">Non-binary</option>
                       </select>
-                    <input type="submit" value="Save changes">
+                    <input type="submit" value="Save filter">
                 </form>
                 <% for(i=0; i < users.length; i++){ { %>
                         <section class="account-item">
@@ -39,6 +40,7 @@
                                     <p>
                                         <%= users[i].residence; %>
                                     </p>
+                                    <span class="profile">view profile</span>
                                 </div>
                             </a>
                         </section>

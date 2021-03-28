@@ -52,7 +52,7 @@ header a {
   font-size: 1.8em;
   padding-top: 100px;
   font-weight: 600;
-  margin-bottom: 30px;
+  margin-bottom: -80px;
 }
 
 label, form p {
@@ -132,16 +132,30 @@ a.delete {
 .home {
   background-color: #171719;
   margin-bottom: -10px;
+  min-height: 100vh;
+}
+
+form {
+  padding-top: 100px;
+  margin-bottom: 30px;
+}
+
+form fieldset {
+  border: none;
+  margin-bottom: 20px;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: white;
+}
+
+form input[type=submit] {
+  margin-bottom: -3px;
 }
 
 .account-item {
   margin-bottom: 10px;
   border-radius: 10px;
   background-color: #171719;
-}
-
-.account-item:nth-of-type(1) {
-  padding-top: 90px;
 }
 
 .account-item a {
@@ -220,5 +234,71 @@ a.delete {
 .myProfile section p {
   margin-top: 0px;
   width: 70vw;
+}
+
+.matches {
+  background-color: #171719;
+  margin-bottom: -10px;
+  min-height: 100vh;
+}
+
+.matches h2 {
+  padding-top: 90px;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+  font-weight: 600;
+  color: white;
+}
+
+.matches p {
+  color: white;
+}
+
+.account-item {
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: #171719;
+}
+
+.account-item a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-decoration: none;
+  padding: 10px;
+  color: white;
+}
+
+.account-item span {
+  font-size: 50px;
+}
+
+.account-item div:first-of-type {
+  margin-right: 10px;
+}
+
+.account-item p {
+  margin: 0;
+}
+
+.account-item p:first-of-type {
+  font-size: 1.2rem;
+}
+
+.account-item p:last-of-type {
+  padding-top: 5px;
+  font-weight: 300;
+}
+
+.account-item .profile {
+  position: absolute;
+  margin-top: -5vh;
+  right: 8vw;
+  font-size: 0.8rem;
+  color: white;
+  text-decoration: none;
+  border: 2px solid #EDB530;
+  padding: 3px;
+  border-radius: 5px;
 }
 /*# sourceMappingURL=style.css.map */
