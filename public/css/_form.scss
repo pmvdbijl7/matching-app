@@ -1,32 +1,32 @@
-label, form p {
-    margin-top: 0;
-    margin-bottom: 5px;
-    color: steelblue;
-}
+@import "./variables";
 
-input {
-    padding: .6rem 1rem;
-    font-size: inherit;
-    border-radius: 10px;
+label, form p {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: 600;
 }
 
 input[type=text], input[type=password], input[type=number], input[type=search], input[type=email], input[type=date], textarea, select {
-    border: 2px solid lightgrey;
+    border:none;
+    border-bottom: 1px solid black;
+    padding: 4px 10px;
+    outline: none;
 }
 
 .radio-group {
     display: flex;
     label {
-    line-height: 1.5rem;
-    color: black;
+        margin-top: 12px;
+        font-weight: 400;
+        font-size: 0.9em;
     }
 }
 
 input[type=radio] {
     width: 20px;
     height: 20px;
-    margin-bottom: 0.5rem;
     margin-right: 0.5rem;
+    margin-top: 12px;
 }
 
 input[type=text], form>div>label {
@@ -38,56 +38,35 @@ input[type=number] {
 }
 
 input[type=submit], button, .button {
-    font-weight: bold;
+    padding: .6rem 4.7rem;
+    font-weight: 600;
     border: none;
-    color: white;
-    background-color: lightblue;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    color: $mainDark;
+    background-color: $mainYellow;
+    margin: 20px 0;
     text-decoration: none;
     display: inline-block;
+    border-radius: 10px;
+    font-size: inherit;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.button {
+    padding: .6rem 6.5rem;
+    background-color: #af241d;
+    color: white;
 }
 
 textarea {
     width: 100%;
 }
 
-a.delete {
-    background-color: lightpink;
-}
-
-section.account-item {
-    background-color: lightskyblue;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    a {
-        display: flex;
-        text-decoration: none;
-        padding: 10px;
-        color: black;
-        span {
-            font-size: 50px;
-            div:first-of-type {
-                margin-right: 10px;
-            }
-            p {
-                margin: 0;
-                p:first-of-type {
-                    font-size: 1.2rem;
-                }
-            }
-        }
-    }
-}
-
 form div {
     padding-bottom: 25px;
 }
 
-.inline {
-    display: inline;
+a.delete {
+    background-color: lightpink;
 }
 
-.red-text {
-    color: red;
-}
