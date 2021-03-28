@@ -11,8 +11,8 @@ const matchesGet = (req, res) => {
 					user: user.toJSON(),
 					users: docs,
 					headerLeft: {
-						path: '/logout',
-						text: 'Log out'
+						path: '/',
+						text: 'Back'
 					},
 					headerRight: {
 						path: '/account/profile',

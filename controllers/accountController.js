@@ -15,7 +15,7 @@ const profileGet = (req, res) => {
 		res.render('pages/account/profile', {
 			title: 'Your profile',
 			user: user.toJSON(),
-			headerLeft: { path: '/', text: 'Back' },
+			headerLeft: { path: '/matches', text: 'Back' },
 			headerRight: { path: '/account/edit', text: 'Edit' },
 		});
 	});
