@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const homeController = require('../controllers/homeController');
+const matchesController = require('../controllers/matchesController');
 const verifyAccess = require('../controllers/verifyAccessController');
 
-router.get('/', verifyAccess, homeController.homeGet);
+router.get('/matches', verifyAccess, matchesController.matchesGet);
 
 module.exports = router;

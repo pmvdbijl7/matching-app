@@ -1,12 +1,12 @@
 const User = require('../models/User');
 
-const homeGet = (req, res) => {
+const matchesGet = (req, res) => {
 	const authUser = req.user._id;
 
 	User.findById(authUser).then((user) => {
 		User.find((err, docs) => {
 			if (!err) {
-				res.render('pages/home', {
+				res.render('pages/matches', {
 					title: 'Home',
 					user: user.toJSON(),
 					users: docs,
@@ -27,5 +27,5 @@ const homeGet = (req, res) => {
 };
 
 module.exports = {
-	homeGet
+	matchesGet
 };
