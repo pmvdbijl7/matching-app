@@ -1,0 +1,16 @@
+<%- include('../../partials/head'); %>
+
+    <body>
+        <%- include('../../partials/header'); %>
+            <main>
+                This is <%= profile.name %>
+                <% if (user.liked_profiles.includes(profile._id.toString())) { %>
+                    <button class="like">unlike</button>
+                <% } else { %>
+                    <button class="like">like</button>
+                <% } %>
+            </main>
+            <script src="/js/script.js"></script>
+    </body>
+
+    </html>

@@ -1,41 +1,33 @@
-<% function getAge(dateString) {
-	if (typeof dateString != 'undefined') {
-	var today=new Date();
-	var birthDate=new Date(dateString);
-	var age=today.getFullYear() - birthDate.getFullYear();
-	var m=today.getMonth() - birthDate.getMonth();
-	if (m < 0 || (m===0 && today.getDate() < birthDate.getDate())) {
-		 age--; 
-		}
-		return '(' + age + ')';
-		}
-	} %>
-<%- include('../partials/head'); %>
-	<body>
-		<%- include('../partials/header'); %>
-			<main>
-				<% for(i=0; i < users.length; i++){ %>
-					<section class="account-item">
-						<a href="/user/<%= users[i]._id; %>">
-							<div>
-								<% if (users[i].picture){ %>
-									<img src="<%= users[i].picture %>" alt="profile picture of <%= users[i].name; %>">
-									<% } else { %>
-										<span class="material-icons">account_circle</span>
-										<% } %>
-							</div>
-							<div>
-								<p>
-									<%= users[i].name; %> <%= getAge(users[i].birthdate); %>
-								</p>
-								<p>
-									<%= users[i].residence; %>
-								</p>
-							</div>
-						</a>
-					</section>
-					<% } %>
-			</main>
-	</body>
+<% function getAge(dateString) { if (typeof dateString !='undefined' ) { var today=new Date(); var birthDate=new Date(dateString); var age=today.getFullYear() - birthDate.getFullYear(); var m=today.getMonth() - birthDate.getMonth(); if (m < 0 || (m===0 && today.getDate() < birthDate.getDate())) { age--; } return '(' + age + ')' ; } } %>
+	<%- include('../partials/head'); %>
 
+		<body>
+			<%- include('../partials/header');%>
+			<main>
+				<h2>Matches</h2>
+				<p>If you like someone and they like you back, you have a match! These are your matches:</p>
+				<% for(i=0; i < users.length; i++) { %>
+					<% if (user._id.toString() != users[i]._id && users[i].liked_profiles.includes(user._id.toString()) && user.liked_profiles.includes(users[i]._id.toString())) {%>
+						<section class="account-item">
+							<a href="/user/profile/<%= users[i]._id; %>">
+								<div>
+									<% if (users[i].profile_image) { %>
+										<img src="/uploads/<%= users[i].profile_image %>" alt="Profile image" width="100">
+									<% } else { %>
+										<img src="/images/default_profile_image.jpg" alt="Profile image" width="100">
+									<% } %>
+								</div>
+								<div>
+									<p>
+										<%= users[i].name; %>
+										<%= getAge(users[i].birthdate); %>
+									</p>
+									<p><%= users[i].residence; %></p>
+								</div>
+							</a>
+						</section>
+					<% } %>
+				<% } %>
+			</main>
+		</body>
 	</html>

@@ -41,6 +41,9 @@ const userSchema = new mongoose.Schema(
 			data: Buffer,
 			type: String,
 		},
+		liked_profiles: {
+			type: Array
+		},
 		genres: [
 			{
 				type: mongoose.Schema.Types.ObjectId,
