@@ -24,27 +24,29 @@
                     <input type="submit" value="Save filter">
                 </form>
                 <% for(i=0; i < users.length; i++) { %>
-                        <section class="account-item">
-                            <a href="/user/<%= users[i]._id; %>">
-                                <div>
-                                    <% if (users[i].picture){ %>
-                                        <img src="<%= users[i].picture %>" alt="profile picture of <%= users[i].name; %>">
-                                        <% } else { %>
-                                            <span class="material-icons">account_circle</span>
-                                            <% } %>
-                                </div>
-                                <div>
-                                    <p>
-                                        <%= users[i].name; %> <%= getAge(users[i].birthdate); %>
-                                    </p>
-                                    <p>
-                                        <%= users[i].residence; %>
-                                    </p>
-                                    <span class="profile">view profile</span>
-                                </div>
-                            </a>
-                        </section>
+                    <% if(authUser != users[i]._id) { %>
+                    <section class="account-item">
+                        <a href="/user/profile/<%= users[i]._id; %>">
+                            <div>
+                                <% if (users[i].profile_image) { %>
+                                    <img src="/uploads/<%= users[i].profile_image %>" alt="Profile image" width="60">
+                                <% } else { %>
+                                    <img src="/images/default_profile_image.jpg" alt="Profile image" width="60">
+                                <% } %>
+                            </div>
+                            <div>
+                                <p>
+                                    <%= users[i].name; %> <%= getAge(users[i].birthdate); %>
+                                </p>
+                                <p>
+                                    <%= users[i].residence; %>
+                                </p>
+                                <span class="profile">view profile</span>
+                            </div>
+                        </a>
+                    </section>
                     <% } %>
+                <% } %>
             </main>
     </body>
 

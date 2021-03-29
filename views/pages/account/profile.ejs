@@ -16,7 +16,12 @@
         <%- include('../../partials/header'); %>
             <main class="myProfile">
                 <section>
-                    <img src="/uploads/<%= user.profile_image %>" alt="profile_image">
+                    <% if (user.profile_image) { %>
+                        <img src="/uploads/<%= user.profile_image %>" alt="Profile image">
+                    <% } else { %>
+                        <img src="/images/default_profile_image.jpg" alt="Profile image">
+                    <% } %>
+                    
                     <h1><%= user.name %> <%= getAge(user.birthdate); %></h1>
                     <h2>Interested in <%= user.interested_in %></h2> 
                     <h2>Lives in <%= user.residence %></h2>

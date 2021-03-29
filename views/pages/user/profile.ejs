@@ -1,16 +1,41 @@
-<%- include('../../partials/head'); %>
 
-    <body>
-        <%- include('../../partials/header'); %>
-            <main>
-                This is <%= profile.name %>
-                <% if (user.liked_profiles.includes(profile._id.toString())) { %>
-                    <button class="like">unlike</button>
-                <% } else { %>
-                    <button class="like">like</button>
-                <% } %>
-            </main>
-            <script src="/js/script.js"></script>
-    </body>
+    <% function getAge(dateString) {
+        if (typeof dateString != 'undefined') {
+        var today=new Date();
+        var birthDate=new Date(dateString);
+        var age=today.getFullYear() - birthDate.getFullYear();
+        var m=today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m===0 && today.getDate() < birthDate.getDate())) {
+             age--; 
+            }
+            return '(' + age + ')';
+            }
+        } %>
+    <%- include('../../partials/head'); %>
+    
+        <body>
+            <%- include('../../partials/header'); %>
+                <main class="myProfile">
+                    <section>
+                        <% if (user.profile_image) { %>
+                            <img src="/uploads/<%= user.profile_image %>" alt="Profile image">
+                        <% } else { %>
+                            <img src="/images/default_profile_image.jpg" alt="Profile image">
+                        <% } %>
+                        
+                        <h1><%= user.name %> <%= getAge(user.birthdate); %></h1>
+                        <h2>Interested in <%= user.interested_in %></h2> 
+                        <h2>Lives in <%= user.residence %></h2>
+                        <p><%= user.biography %></p>
 
-    </html>
+                        <% if (authUser.liked_profiles.includes(user._id.toString())) { %>
+                            <button class="like">unlike</button>
+                        <% } else { %>
+                            <button class="like">like</button>
+                        <% } %>
+                    </section>
+                </main>
+                <script src="/js/script.js"></script>
+        </body>
+    
+        </html>

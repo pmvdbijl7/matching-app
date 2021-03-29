@@ -53,7 +53,6 @@ app.use(accountRoutes);
 app.use(authRoutes);
 app.use(matchesRoutes);
 app.use(homeRoutes);
-app.use(accountRoutes);
 app.use(userRoutes);
 app.use(filterRoutes);
 
