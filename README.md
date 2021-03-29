@@ -71,7 +71,7 @@ Below is an example of how the database structure looks like from the 'users' co
 
 ## Support
 
-If you run into any problems, feel free to send us an email.
+If you run into any problems, feel free to create an issue. 
 
 ## Roadmap
 
