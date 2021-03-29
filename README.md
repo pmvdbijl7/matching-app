@@ -8,21 +8,26 @@
 
 ## Table of Contents
 
--   [Features](#features)
--   [Usage](#usage)
--   [Database Structure](#database-structure)
--   [Support](#support)
--   [Roadmap](#roadmap)
--   [Credits](#credits)
--   [License](#license)
+- [Features](#features)
+- [Usage](#usage)
+- [Database Structure](#database-structure)
+- [Support](#support)
+- [Roadmap](#roadmap)
+- [Credits](#credits)
+- [Contributors](#contributers)
+- [License](#license)
 
 ## Features
 
--
--
--
--
--
+- Authenitiaction
+- Create profile
+- Edit profile
+- Update profile
+- Delete profile
+- Liking
+- Upload profile picture
+- Filter
+- Matching other users
 
 ## Usage
 
@@ -54,16 +59,19 @@ Below is an example of how the database structure looks like from the 'users' co
 | gender | String | _Male_ |
 | birthdate | Date | _2000-03-05_ |
 | residence | String | _London_ |
-| interested_in | String | _Women_ |
+| interested*in | String | \_Women* |
 | biography | String | _Hello, my name is John :)_ |
 | email | String | *john@gmail.com* |
 | password | String | _j90f3hag;/2hfeag43gasdg3_ |
+| genres    | Array | ["Horror", "Thriller"]
+| movies    | Array | ["Scarface", "Titanic"]
+| series    | Array | ["Casa Del Papel", "Rick and Morty"]
 | createdAt | Date | _2021-03-02T10:12:48.899+00:00_ |
 | updatedAt | Date | _2021-03-05T13:11:47.730+00:00_ |
 
 ## Support
 
-If you run into any problems, feel free to send us an email.
+If you run into any problems, feel free to create an issue. 
 
 ## Roadmap
 
@@ -73,13 +81,17 @@ In this section ideas for this project will appear in the future.
 
 This project uses the following open source packages:
 
--   [Node.js](https://nodejs.org/en/)
--   [Npm](https://www.npmjs.com/)
--   [Nodemon](https://nodemon.io/)
--   [Express](http://expressjs.com/)
--   [EJS](https://ejs.co/)
--   [Mongoose](https://mongoosejs.com/)
--   [Dotenv](https://www.npmjs.com/package/dotenv)
+- [Node.js](https://nodejs.org/en/)
+- [Npm](https://www.npmjs.com/)
+- [Nodemon](https://nodemon.io/)
+- [Express](http://expressjs.com/)
+- [EJS](https://ejs.co/)
+- [Mongoose](https://mongoosejs.com/)
+- [Dotenv](https://www.npmjs.com/package/dotenv)
+
+## Contributors
+
+The project was made by: [Aron Pelgrim](https://github.com/aronpelgrim), [Joris Meester](https://github.com/JorisMeester), [Patrick van der Bijl](https://github.com/pmvdbijl7/) and [Christiaan Braun](https://github.com/christiaanbraun/).
 
 ## License
 
