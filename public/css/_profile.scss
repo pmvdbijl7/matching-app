@@ -1,0 +1,32 @@
+@import "./variables";
+
+.myProfile {
+    background-color: $mainDark;
+    height: 100vh;
+    color: white;
+}
+
+.myProfile section{
+    padding-top: 100px;
+    img {
+        width: 70vw;
+        position: relative;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+    h1{
+        font-size: 1.8em;
+        margin-top: 10px;
+        font-weight: 600;
+        margin-bottom: 30px;
+    }
+    h2{
+        font-size: 1.1em;
+        margin-top: -18px;
+        font-weight: 600;
+        margin-bottom: 30px;
+    }
+    p {
+        margin-top: 0px;
+        width: 70vw;
+    }
+}

@@ -3,10 +3,7 @@
           box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 main > *, section {
@@ -15,36 +12,60 @@ main > *, section {
 }
 
 header {
-  padding-top: 20px;
-  margin-bottom: 20px;
+  padding-top: 15px;
+  margin-bottom: 15px;
   text-align: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-shadow: 0 5px 5px gray;
-          box-shadow: 0 5px 5px gray;
+  position: fixed;
+  width: 100vw;
+  background-color: #171719;
+  -webkit-box-shadow: 0px 15px 15px -15px black;
+          box-shadow: 0px 15px 15px -15px black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  z-index: 1;
 }
 
 header h1 {
-  font-size: 1.5em;
-  padding-bottom: 0.5em;
-  margin: 0;
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 0.05em;
+  font-size: 2.3em;
+  padding-bottom: 0.25em;
+  color: #EDB530;
+  text-transform: uppercase;
+}
+
+header a {
+  color: white;
+}
+
+.auth-container h1 {
+  font-size: 1.8em;
+  padding-top: 100px;
+  font-weight: 600;
+  margin-bottom: -80px;
 }
 
 label, form p {
-  margin-top: 0;
+  margin-top: 10px;
   margin-bottom: 5px;
-  color: steelblue;
-}
-
-input {
-  padding: .6rem 1rem;
-  font-size: inherit;
-  border-radius: 10px;
+  font-weight: 600;
 }
 
 input[type=text], input[type=password], input[type=number], input[type=search], input[type=email], input[type=date], textarea, select {
-  border: 2px solid lightgrey;
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 4px 10px;
+  outline: none;
 }
 
 .radio-group {
@@ -54,15 +75,16 @@ input[type=text], input[type=password], input[type=number], input[type=search], 
 }
 
 .radio-group label {
-  line-height: 1.5rem;
-  color: black;
+  margin-top: 12px;
+  font-weight: 400;
+  font-size: 0.9em;
 }
 
 input[type=radio] {
   width: 20px;
   height: 20px;
-  margin-bottom: 0.5rem;
   margin-right: 0.5rem;
+  margin-top: 12px;
 }
 
 input[type=text], form > div > label {
@@ -74,64 +96,209 @@ input[type=number] {
 }
 
 input[type=submit], button, .button {
-  font-weight: bold;
+  padding: .6rem 4.7rem;
+  font-weight: 600;
   border: none;
-  color: white;
-  background-color: lightblue;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  color: #171719;
+  background-color: #EDB530;
+  margin: 20px 0;
   text-decoration: none;
   display: inline-block;
+  border-radius: 10px;
+  font-size: inherit;
+  -webkit-box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.button {
+  padding: .6rem 6.5rem;
+  background-color: #af241d;
+  color: white;
 }
 
 textarea {
   width: 100%;
 }
 
+form div {
+  padding-bottom: 25px;
+}
+
 a.delete {
   background-color: lightpink;
 }
 
-section.account-item {
-  background-color: lightskyblue;
-  margin-bottom: 10px;
-  border-radius: 10px;
+.home {
+  background-color: #171719;
+  margin-bottom: -10px;
+  min-height: 100vh;
 }
 
-section.account-item a {
+form {
+  padding-top: 100px;
+  margin-bottom: 30px;
+}
+
+form fieldset {
+  border: none;
+  margin-bottom: 20px;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: white;
+}
+
+form input[type=submit] {
+  margin-bottom: -3px;
+}
+
+.account-item {
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: #171719;
+}
+
+.account-item a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   text-decoration: none;
   padding: 10px;
-  color: black;
+  color: white;
 }
 
-section.account-item a span {
+.account-item span {
   font-size: 50px;
 }
 
-section.account-item a span div:first-of-type {
+.account-item div:first-of-type {
   margin-right: 10px;
 }
 
-section.account-item a span p {
+.account-item p {
   margin: 0;
 }
 
-section.account-item a span p p:first-of-type {
+.account-item p:first-of-type {
   font-size: 1.2rem;
 }
 
-form div {
-  padding-bottom: 25px;
+.account-item p:last-of-type {
+  padding-top: 5px;
+  font-weight: 300;
 }
 
-.inline {
-  display: inline;
+.account-item .profile {
+  position: absolute;
+  margin-top: -5vh;
+  right: 8vw;
+  font-size: 0.8rem;
+  color: white;
+  text-decoration: none;
+  border: 2px solid #EDB530;
+  padding: 3px;
+  border-radius: 5px;
 }
 
-.red-text {
-  color: red;
+.myProfile {
+  background-color: #171719;
+  height: 100vh;
+  color: white;
+}
+
+.myProfile section {
+  padding-top: 100px;
+}
+
+.myProfile section img {
+  width: 70vw;
+  position: relative;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.myProfile section h1 {
+  font-size: 1.8em;
+  margin-top: 10px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.myProfile section h2 {
+  font-size: 1.1em;
+  margin-top: -18px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.myProfile section p {
+  margin-top: 0px;
+  width: 70vw;
+}
+
+.matches {
+  background-color: #171719;
+  margin-bottom: -10px;
+  min-height: 100vh;
+}
+
+.matches h2 {
+  padding-top: 90px;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+  font-weight: 600;
+  color: white;
+}
+
+.matches p {
+  color: white;
+}
+
+.account-item {
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: #171719;
+}
+
+.account-item a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-decoration: none;
+  padding: 10px;
+  color: white;
+}
+
+.account-item span {
+  font-size: 50px;
+}
+
+.account-item div:first-of-type {
+  margin-right: 10px;
+}
+
+.account-item p {
+  margin: 0;
+}
+
+.account-item p:first-of-type {
+  font-size: 1.2rem;
+}
+
+.account-item p:last-of-type {
+  padding-top: 5px;
+  font-weight: 300;
+}
+
+.account-item .profile {
+  position: absolute;
+  margin-top: -5vh;
+  right: 8vw;
+  font-size: 0.8rem;
+  color: white;
+  text-decoration: none;
+  border: 2px solid #EDB530;
+  padding: 3px;
+  border-radius: 5px;
 }
 /*# sourceMappingURL=style.css.map */
