@@ -63,6 +63,9 @@ Below is an example of how the database structure looks like from the 'users' co
 | biography | String | _Hello, my name is John :)_ |
 | email | String | *john@gmail.com* |
 | password | String | _j90f3hag;/2hfeag43gasdg3_ |
+| genres    | Array | ["Horror", "Thriller"]
+| movies    | Array | ["Scarface", "Titanic"]
+| series    | Array | ["Casa Del Papel", "Rick and Morty"]
 | createdAt | Date | _2021-03-02T10:12:48.899+00:00_ |
 | updatedAt | Date | _2021-03-05T13:11:47.730+00:00_ |
 
