@@ -27,7 +27,6 @@ passport.use(
 			callbackURL: 'http://localhost:3000/google/callback',
 		},
 		(accessToken, refreshToken, profile, cb) => {
-			console.log(profile);
 			cb(null, profile);
 		}
 	)
@@ -35,11 +34,7 @@ passport.use(
 
 // Get Register Page
 const registerGet = (req, res) => {
-	res.render('pages/auth/register', {
-		title: 'Sign up',
-		interests: ['Men', 'Women', 'Everyone'],
-		genders: ['Male', 'Female', 'Non-binary'],
-	});
+	res.render('pages/auth/register', { title: 'Create an Account' });
 };
 
 // Register New User
@@ -57,18 +52,29 @@ const registerPost = async (req, res) => {
 		name: req.body.name,
 		email: req.body.email,
 		password: hashedPassword,
-		gender: req.body.gender,
-		birthdate: req.body.birthdate,
-		residence: req.body.residence,
-		interested_in: req.body.interested_in,
-		biography: req.body.biography,
-		//genres: req.body.genres,
-		//movies: req.body.movies,
-		//series: req.body.series
 	});
 
 	user.save()
-		.then((result) => {
+		.then((user) => {
+			// Redirect to Home
+			res.redirect('/signin');
+		})
+		.catch((err) => {
+			res.send(err.message);
+		});
+};
+
+// Google Callback
+const googleCb = (req, res) => {
+	// Create New User
+	const user = new User({
+		name: req.user._json.given_name,
+		email: req.user._json.email,
+		password: null,
+	});
+
+	user.save()
+		.then((user) => {
 			// Create accessToken and Assign to Cookie
 			const accessToken = jwt.sign(
 				{ _id: user._id },
@@ -82,12 +88,6 @@ const registerPost = async (req, res) => {
 		.catch((err) => {
 			res.send(err.message);
 		});
-};
-
-// Google Callback
-const googleCb = (req, res) => {
-	// Redirect to Home
-	res.redirect('/');
 };
 
 // Get Login Page
@@ -112,7 +112,42 @@ const loginPost = async (req, res) => {
 	// Create accessToken and Assign to Cookie
 	const accessToken = jwt.sign({ _id: user._id }, process.env.JWT_KEY);
 	res.cookie('accessToken', accessToken);
-	res.redirect('/');
+
+	if (!user.gender) {
+		res.redirect('/signin/preferences');
+	} else {
+		res.redirect('/');
+	}
+};
+
+// Get Preferences Page
+const preferencesGet = (req, res) => {
+	res.render('pages/auth/preferences', {
+		title: 'Preferences',
+		genders: ['Male', 'Female', 'Non-binary'],
+		interests: ['Men', 'Women', 'Everyone'],
+	});
+};
+
+// Update Preferences
+const preferencesPost = (req, res) => {
+	// Get Authenticated User
+	const authUser = req.user._id;
+
+	// Update User
+	User.findByIdAndUpdate(authUser, {
+		gender: req.body.gender,
+		birthdate: req.body.birthdate,
+		residence: req.body.residence,
+		interested_in: req.body.interested_in,
+		biography: req.body.biography,
+	})
+		.then((user) => {
+			res.redirect('/');
+		})
+		.catch((err) => {
+			res.send(err.message);
+		});
 };
 
 // Logout User
@@ -129,5 +164,7 @@ module.exports = {
 	googleCb,
 	loginGet,
 	loginPost,
+	preferencesGet,
+	preferencesPost,
 	logout,
 };
