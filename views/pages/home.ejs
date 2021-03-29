@@ -1,41 +1,51 @@
 <% function getAge(dateString) {
-	if (typeof dateString != 'undefined') {
-	var today=new Date();
-	var birthDate=new Date(dateString);
-	var age=today.getFullYear() - birthDate.getFullYear();
-	var m=today.getMonth() - birthDate.getMonth();
-	if (m < 0 || (m===0 && today.getDate() < birthDate.getDate())) {
-		 age--; 
-		}
-		return '(' + age + ')';
-		}
-	} %>
+    if (typeof dateString != 'undefined') {
+    var today=new Date();
+    var birthDate=new Date(dateString);
+    var age=today.getFullYear() - birthDate.getFullYear();
+    var m=today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m===0 && today.getDate() < birthDate.getDate())) {
+         age--; 
+        }
+        return '(' + age + ')';
+        }
+    } %>
 <%- include('../partials/head'); %>
-	<body>
-		<%- include('../partials/header'); %>
-			<main>
-				<% for(i=0; i < users.length; i++){ %>
-					<section class="account-item">
-						<a href="/user/<%= users[i]._id; %>">
-							<div>
-								<% if (users[i].picture){ %>
-									<img src="<%= users[i].picture %>" alt="profile picture of <%= users[i].name; %>">
-									<% } else { %>
-										<span class="material-icons">account_circle</span>
-										<% } %>
-							</div>
-							<div>
-								<p>
-									<%= users[i].name; %> <%= getAge(users[i].birthdate); %>
-								</p>
-								<p>
-									<%= users[i].residence; %>
-								</p>
-							</div>
-						</a>
-					</section>
-					<% } %>
-			</main>
-	</body>
+    <body>
+        <%- include('../partials/header'); %>
+            <main class="home"> 
+                <form method="POST" action="/filter/">
+                    <fieldset>Gender preferences</fieldset>
+                    <select name="gender" id="gender">
+                        <option name="Male" value="Male">Male</option>
+                        <option name="Female" value="Female">Female</option>
+                        <option name="Non-binary" value="Non-binary">Non-binary</option>
+                      </select>
+                    <input type="submit" value="Save filter">
+                </form>
+                <% for(i=0; i < users.length; i++) { %>
+                        <section class="account-item">
+                            <a href="/user/<%= users[i]._id; %>">
+                                <div>
+                                    <% if (users[i].picture){ %>
+                                        <img src="<%= users[i].picture %>" alt="profile picture of <%= users[i].name; %>">
+                                        <% } else { %>
+                                            <span class="material-icons">account_circle</span>
+                                            <% } %>
+                                </div>
+                                <div>
+                                    <p>
+                                        <%= users[i].name; %> <%= getAge(users[i].birthdate); %>
+                                    </p>
+                                    <p>
+                                        <%= users[i].residence; %>
+                                    </p>
+                                    <span class="profile">view profile</span>
+                                </div>
+                            </a>
+                        </section>
+                    <% } %>
+            </main>
+    </body>
 
-	</html>
+    </html>

@@ -1,9 +1,27 @@
+<% function getAge(dateString) {
+	if (typeof dateString != 'undefined') {
+	var today=new Date();
+	var birthDate=new Date(dateString);
+	var age=today.getFullYear() - birthDate.getFullYear();
+	var m=today.getMonth() - birthDate.getMonth();
+	if (m < 0 || (m===0 && today.getDate() < birthDate.getDate())) {
+		 age--; 
+		}
+		return '(' + age + ')';
+		}
+	} %>
 <%- include('../../partials/head'); %>
 
     <body>
         <%- include('../../partials/header'); %>
-            <main>
-                My name is <%= user.name %>
+            <main class="myProfile">
+                <section>
+                    <img src="/uploads/<%= user.profile_image %>" alt="profile_image">
+                    <h1><%= user.name %> <%= getAge(user.birthdate); %></h1>
+                    <h2>Interested in <%= user.interested_in %></h2> 
+                    <h2>Lives in <%= user.residence %></h2>
+                    <p><%= user.biography %></p>
+                </section>
             </main>
     </body>
 

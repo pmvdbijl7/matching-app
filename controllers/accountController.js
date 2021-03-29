@@ -15,7 +15,7 @@ const profileGet = (req, res) => {
 		res.render('pages/account/profile', {
 			title: 'Your profile',
 			user: user.toJSON(),
-			headerLeft: { path: '/', text: 'Back' },
+			headerLeft: { path: '/matches', text: 'Back' },
 			headerRight: { path: '/account/edit', text: 'Edit' },
 		});
 	});
@@ -41,7 +41,7 @@ const editGet = (req, res) => {
 const editPost = (req, res) => {
 	const authUser = req.user._id;
 
-	// Check if Password is Correct
+    // Validate Edit data
 	const { error } = editValidation(req.body);
 	if (error) return res.status(400).send(error.details[0].message);
 

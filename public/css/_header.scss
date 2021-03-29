@@ -1,12 +1,37 @@
+@import "./variables";
+
 header {
-    padding-top: 20px;
-    margin-bottom: 20px;
+    padding-top: 15px;
+    margin-bottom: 15px;
     text-align: center;
     align-items: center;
-    box-shadow: 0 5px 5px gray;
+    position: fixed;
+    width: 100vw;
+    background-color: $mainDark;
+    box-shadow: 0px 15px 15px -15px black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    z-index: 1;
     h1 {
-        font-size: 1.5em;
-        padding-bottom: 0.5em;
-        margin: 0;
+        font-family: 'Bebas Neue', cursive;
+        letter-spacing: 0.05em;
+        font-size: 2.3em;
+        padding-bottom: 0.25em;
+        color: $mainYellow;
+        text-transform: uppercase;
+    }
+    a {
+        color: white;
+
+    }
+}
+
+.auth-container {
+    h1 {
+        font-size: 1.8em;
+        padding-top: 100px;
+        font-weight: 600;
+        margin-bottom: -80px;
     }
 }
