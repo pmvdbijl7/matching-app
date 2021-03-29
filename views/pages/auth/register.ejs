@@ -1,90 +1,40 @@
 <%- include('../../partials/head'); %>
 	<body>
 		<%- include('../../partials/header'); %>
+
 		<main>
 			<div class="auth-container">
-				<h1>Sign Up</h1>
+				<h1>Create an Account</h1>
 
 				<form action="/signup" method="POST">
 					<div class="form-group">
 						<label for="name">Name</label>
-						<input type="text" name="name" id="name" required/>
+						<input type="text" name="name" id="name" required>
 					</div>
 
 					<div class="form-group">
 						<label for="email">Email Address</label>
-						<input type="email" name="email" id="email" required/>
+						<input type="email" name="email" id="email" required>
 					</div>
 
 					<div class="form-group">
 						<label for="password">Password</label>
-						<input type="password" name="password" id="password" required/>
+						<input type="password" name="password" id="password" required>
 					</div>
 
 					<div class="form-group">
-						<label for="repeat_password">Repeat your password</label>
-						<input type="password" name="repeat_password" id="repeat_password" required/>
+						<label for="password_repeat">Repeat Password</label>
+						<input type="password" name="password_repeat" id="password_repeat" required>
 					</div>
-
+					
 					<div class="form-group">
-						<p>Gender</p>
-						<%for(i=0; i < genders.length; i++){ %>
-							<div class="radio-group">
-								<input type="radio" id="<%= genders[i] %>" name="gender" value="<%= genders[i] %>" required>
-								<label for="<%= genders[i] %>">
-									<%= genders[i] %>
-								</label>
-							</div>
-							<% } %>
+						<input type="submit" value="Create Account">
 					</div>
-					<div class="form-group">
-						<label for="birthdate">Birthdate</label>
-						<input type="date" id="birthdate" name="birthdate" min="18" max="130" class="inline" required>
-					</div>
-					<div class="form-group">
-						<label for="residence">Where do you live?</label>
-						<input type="search" id="residence" name="residence" required>
-					</div>
-					<div class="form-group">
-						<p>Interested in</p>
-						<% for(i=0; i < interests.length; i++){ %>
-							<div class="radio-group">
-								<input type="radio" id="<%= interests[i] %>" name="interested_in" value="<%= interests[i] %>" required>
-								<label for="<%= interests[i] %>">
-									<%= interests[i] %>
-								</label>
-							</div>
-							<% } %>
-					</div>
-					<div class="form-group">
-						<label for="biography">Biography</label>
-						<textarea id="biography" name="biography" required></textarea>
-					</div>
-					<!-- <div class="form-group">
-						<label for="genres">What are your favorite genres?</label>
-						<select name="genres" id="genres" multiple>
-							<%// for(i=0; i < genres.length; i++){ %>
-								<option value="<%//= genres[i] %>">
-									<%//= genres[i] %>
-								</option>
-								<%// } %>
-						</select>
-					</div> 
-					<div id="movie-list" class="form-group">
-						<label for="movies">What are your favorite movies?</label>
-						<input type="search" id="movies" name="movies">
-						<button id="add-movie" type="button">+</button>
-					</div>
-					<div id="serie-list" class="form-group">
-						<label for="series">What are your favorite series?</label>
-						<input type="search" id="series" name="series">
-						<button id="add-serie" type="button">+</button>
-					</div> -->
-					<input type="submit" value="Create account">
 				</form>
+
 				<p>Already have an account? <a href="/signin">Sign In</a></p>
 			</div>
 		</main>
-		<script src="../js/script.js"></script>
-		</body>
+
+	</body>
 </html>
