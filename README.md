@@ -43,8 +43,15 @@ To clone and run this application, you need [Git](https://git-scm.com/) and [Nod
     # Install dependencies
     $ npm install
 
+    # Create an .env file in the root of the project and fill it with your own MongoDB Atlas credentials (you need a MongoDB cluster and database):
+    DB_PASSWORD=yourClusterName
+    DB_USERNAME=yourDatabaseName
+    JWT_KEY=g4ag987dag99g1a9feg
+
     # Run the app
     $ npm start
+
+    # Now enter localhost:3000 in the browser URL bar, the application should run.
 ```
 
 Note: If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
