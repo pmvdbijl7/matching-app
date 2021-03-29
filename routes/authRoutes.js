@@ -5,6 +5,10 @@ const authController = require('../controllers/authController');
 router.get('/signup', authController.registerGet);
 router.post('/signup', authController.registerPost);
 
+// Create Profile Routes
+router.get('/createprofile', authController.createProfileGet);
+router.post('/createprofile', authController.createProfilePost);
+
 // Login Routes
 router.get('/signin', authController.loginGet);
 router.post('/signin', authController.loginPost);

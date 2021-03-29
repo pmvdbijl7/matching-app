@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const axios = require('axios');
 const {
   registerValidation,
+  createProfileValidation,
   loginValidation,
 } = require('./validationController');
 const Movie = require('../models/Movie');
@@ -14,8 +15,6 @@ require('dotenv/config');
 const registerGet = (req, res) => {
   res.render('pages/auth/register', {
     title: 'Sign up',
-    interests: ['Men', 'Women', 'Everyone'],
-    genders: ['Male', 'Female', 'Non-binary'],
   });
 };
 
@@ -23,31 +22,6 @@ const registerGet = (req, res) => {
 const registerPost = async (req, res) => {
   // Maak asynch functie met forEach loop
   // Zet onder functie let data = await functieNaam
-
-  let movieArray = [];
-
-  async function getMoviePosters() {
-    req.body.movies.forEach(async (movie) => {
-      let posters = await axios({
-        method: 'GET',
-        url: `http://www.omdbapi.com/?apikey=${process.env.API_KEY}&t=${movie}`,
-      })
-        .then((res) => {
-          console.log(res.data.Poster);
-          movieArray.push(res.data.Poster);
-          console.log(movieArray);
-        })
-        .catch((err) => {
-          console.log('error', err);
-        });
-    });
-  }
-
-  async function fillMovieArray() {
-    let data = await getMoviePosters();
-  }
-
-  fillMovieArray();
 
   // Validate Register Data
   const { error } = registerValidation(req.body);
@@ -62,17 +36,15 @@ const registerPost = async (req, res) => {
     email: req.body.email,
     password: hashedPassword,
     gender: req.body.gender,
-    birthdate: req.body.birthdate,
-    residence: req.body.residence,
-    interested_in: req.body.interested_in,
-    biography: req.body.biography,
-    //genres: req.body.genres,
-    movies: req.body.movies,
-    posters: movieArray,
-    //series: req.body.series,
+    birthdate: undefined,
+    residence: undefined,
+    interested_in: undefined,
+    biography: undefined,
+    genres: undefined,
+    movies: undefined,
+    posters: undefined,
+    series: undefined,
   });
-
-  console.log(user);
 
   await user
     .save()
@@ -82,11 +54,31 @@ const registerPost = async (req, res) => {
       res.cookie('accessToken', accessToken);
 
       // Redirect to Home
-      res.redirect('/');
+      res.redirect('/createprofile');
     })
     .catch((err) => {
       res.send(err.message);
     });
+};
+
+// Get Create Profile Page
+const createProfileGet = (req, res) => {
+  res.render('pages/auth/createprofile', {
+    title: 'Create Profile',
+    interests: ['Men', 'Women', 'Everyone'],
+    genders: ['Male', 'Female', 'Non-binary'],
+  });
+};
+
+// Create Profile Post
+const createProfilePost = (req, res) => {
+  const authUser = req.user._id;
+
+  User.findByIdAndUpdate(authUser, req.body).then(() => {
+    User.findOne({ authUser }).then((result) => {
+      res.redirect('/createprofile');
+    });
+  });
 };
 
 // Get Login Page
@@ -125,6 +117,8 @@ const logout = (req, res) => {
 module.exports = {
   registerGet,
   registerPost,
+  createProfileGet,
+  createProfilePost,
   loginGet,
   loginPost,
   logout,

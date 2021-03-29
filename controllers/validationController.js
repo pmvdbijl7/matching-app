@@ -6,15 +6,22 @@ const registerValidation = (data) => {
     email: Joi.string().max(255).email().required(),
     password: Joi.string().min(8).required(),
     repeat_password: Joi.ref('password'),
+  });
+
+  return schema.validate(data);
+};
+
+const createProfileValidation = (data) => {
+  const schema = Joi.object({
     gender: Joi.string().required(),
     birthdate: Joi.date().required(),
     residence: Joi.string().required(),
     interested_in: Joi.string().required(),
     biography: Joi.string().max(1024),
-    // genres: Joi.array().items(Joi.string()),
+    genres: Joi.array().items(Joi.string()),
     movies: Joi.array(),
     posters: Joi.string(),
-    // series: Joi.array().items(Joi.string())
+    series: Joi.array().items(Joi.string()),
   });
 
   return schema.validate(data);
@@ -66,6 +73,7 @@ const deleteValidation = (data) => {
 // };
 
 module.exports.registerValidation = registerValidation;
+module.exports.createProfileValidation = createProfileValidation;
 module.exports.loginValidation = loginValidation;
 module.exports.editValidation = editValidation;
 module.exports.deleteValidation = deleteValidation;
