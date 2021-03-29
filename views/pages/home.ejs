@@ -23,7 +23,7 @@
                       </select>
                     <input type="submit" value="Save filter">
                 </form>
-                <% for(i=0; i < users.length; i++){ { %>
+                <% for(i=0; i < users.length; i++) { %>
                         <section class="account-item">
                             <a href="/user/<%= users[i]._id; %>">
                                 <div>
@@ -45,7 +45,6 @@
                             </a>
                         </section>
                     <% } %>
-                <% } %>
             </main>
     </body>
 
