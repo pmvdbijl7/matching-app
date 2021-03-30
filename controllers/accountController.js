@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Genre = require('../models/Genre');
 const bcrypt = require('bcrypt');
 const { registerValidation,
        editValidation,
@@ -25,6 +26,7 @@ const profileGet = (req, res) => {
 const editGet = (req, res) => {
 	const authUser = req.user._id;
 
+	Genre.find((err, genres) => {
 	User.findById(authUser).then((user) => {
 		res.render('pages/account/edit', {
 			title: 'Edit your profile',
@@ -33,7 +35,9 @@ const editGet = (req, res) => {
 			headerRight: { path: '/account/delete', text: 'Delete' },
 			interests: ['Men', 'Women', 'Everyone'],
 			genders: ['Male', 'Female', 'Non-binary'],
+			genres: genres
 		});
+	});
 	});
 };
 
@@ -55,6 +59,7 @@ const editPost = (req, res) => {
 			residence: req.body.residence,
 			interested_in: req.body.interested_in,
 			biography: req.body.biography,
+			genres: req.body.genres,
 		}).then((updatedUser) => {
 			res.redirect('/account/profile');
 		});

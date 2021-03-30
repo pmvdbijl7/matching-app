@@ -62,16 +62,17 @@
                             <label for="biography">Biography</label>
                             <textarea id="biography" name="biography" required><%= user.biography %></textarea>
                         </div>
-                        <!-- <div class="form-group">
-						<label for="genres">What are your favorite genres?</label>
-						<select name="genres" id="genres" multiple>
-							<%// for(i=0; i < genres.length; i++){ %>
-								<option value="<%//= genres[i] %>">
-									<%//= genres[i] %>
-								</option>
-								<%// } %>
-						</select>
-					</div> 
+                        <div class="form-group">
+                            <label for="genres">What are your favorite genres?</label>
+                            <select name="genres" id="genres" multiple>
+                                <% for(i=0; i < genres.length; i++){ %>
+                                    <option value="<%= genres[i]._id %>" <% if (user.genres.includes(genres[i]._id)) { %> selected <% } %>>
+                                            <%= genres[i].name %>
+                                    </option>
+                                <% } %>
+                            </select>
+                        </div>
+                    <!--
 					<div id="movie-list" class="form-group">
 						<label for="movies">What are your favorite movies?</label>
 						<input type="search" id="movies" name="movies">

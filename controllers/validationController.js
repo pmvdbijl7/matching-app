@@ -20,6 +20,19 @@ const loginValidation = (data) => {
 	return schema.validate(data);
 };
 
+const preferencesValidation = (data) => {
+	const schema = Joi.object({
+		gender: Joi.string().required(),
+		birthdate: Joi.date().required(),
+		residence: Joi.string().required(),
+		interested_in: Joi.string().required(),
+		biography: Joi.string().max(1024),
+		genres: Joi.array().items(Joi.string())
+	});
+
+	return schema.validate(data);
+};
+
 const editValidation = (data) => {
 	const schema = Joi.object({
 		name: Joi.string().min(2).max(255).required(),
@@ -29,9 +42,7 @@ const editValidation = (data) => {
 		residence: Joi.string().required(),
 		interested_in: Joi.string().required(),
 		biography: Joi.string().max(1024),
-		// genres: Joi.array().items(Joi.string()),
-		// movies: Joi.array().items(Joi.string()),
-		// series: Joi.array().items(Joi.string())
+		genres: Joi.array().items(Joi.string())
 	});
 
 	return schema.validate(data);
@@ -58,6 +69,7 @@ const editPasswordValidation = (data) => {
 
 module.exports.registerValidation = registerValidation;
 module.exports.loginValidation = loginValidation;
+module.exports.preferencesValidation = preferencesValidation;
 module.exports.editValidation = editValidation;
 module.exports.deleteValidation = deleteValidation;
 module.exports.editPasswordValidation = editPasswordValidation;
