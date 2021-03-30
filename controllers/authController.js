@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Gemre = require('../models/Genre');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const {
@@ -122,6 +123,7 @@ const loginPost = async (req, res) => {
 
 // Get Preferences Page
 const preferencesGet = (req, res) => {
+	res.
 	res.render('pages/auth/preferences', {
 		title: 'Preferences',
 		genders: ['Male', 'Female', 'Non-binary'],
