@@ -8,7 +8,7 @@ const profileGet = (req, res) => {
 		User.findById(user).then((user) => {
 			res.render('pages/user/profile', {
 				title: `Profile of ${user.name}`,
-				authUser: authUser.toJSON(),
+				authUser: authUser,
 				user: user,
 				headerLeft: { path: '/', text: 'Back' },
 			});

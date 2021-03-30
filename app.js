@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 require('dotenv/config');
 const passport = require('passport');
-const initializePassport = require('./config/passport');
 
 // Get .env Variables
 const hostURL = process.env.URL;
@@ -31,8 +30,6 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
-
-// initializePassport(passport);
 
 // Connect to Database
 mongoose.connect(

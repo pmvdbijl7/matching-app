@@ -42,7 +42,7 @@ const userSchema = new mongoose.Schema(
 			type: String,
 		},
 		liked_profiles: {
-			type: Array
+			type: Array,
 		},
 		genres: [
 			{

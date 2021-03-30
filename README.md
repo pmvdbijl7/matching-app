@@ -43,8 +43,15 @@ To clone and run this application, you need [Git](https://git-scm.com/) and [Nod
     # Install dependencies
     $ npm install
 
+    # Create an .env file in the root of the project and fill it with your own MongoDB Atlas credentials (you need a MongoDB cluster and database):
+    DB_PASSWORD=yourClusterName
+    DB_USERNAME=yourDatabaseName
+    JWT_KEY=g4ag987dag99g1a9feg
+
     # Run the app
     $ npm start
+
+    # Now enter localhost:3000 in the browser URL bar, the application should run.
 ```
 
 Note: If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
@@ -63,12 +70,15 @@ Below is an example of how the database structure looks like from the 'users' co
 | biography | String | _Hello, my name is John :)_ |
 | email | String | *john@gmail.com* |
 | password | String | _j90f3hag;/2hfeag43gasdg3_ |
+| genres    | Array | ["Horror", "Thriller"]
+| movies    | Array | ["Scarface", "Titanic"]
+| series    | Array | ["Casa Del Papel", "Rick and Morty"]
 | createdAt | Date | _2021-03-02T10:12:48.899+00:00_ |
 | updatedAt | Date | _2021-03-05T13:11:47.730+00:00_ |
 
 ## Support
 
-If you run into any problems, feel free to send us an email.
+If you run into any problems, feel free to create an issue. 
 
 ## Roadmap
 
