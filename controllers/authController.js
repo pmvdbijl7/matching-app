@@ -67,53 +67,55 @@ const registerPost = async (req, res) => {
 // Google Callback
 const googleCb = (req, res) => {
 	// Create New User
-	const isUser = User.findOne({ email: req.user._json.email });
+	const isUser = User.findOne({ email: req.user._json.email }).then(
+		(isUser) => {
+			if (!isUser) {
+				const user = new User({
+					name: req.user._json.given_name,
+					email: req.user._json.email,
+					password: null,
+				});
 
-	if (!isUser) {
-		const user = new User({
-			name: req.user._json.given_name,
-			email: req.user._json.email,
-			password: null,
-		});
+				user.save()
+					.then((user) => {
+						// Create accessToken and Assign to Cookie
+						const accessToken = jwt.sign(
+							{ _id: user._id },
+							process.env.JWT_KEY
+						);
+						res.cookie('accessToken', accessToken);
 
-		user.save()
-			.then((user) => {
-				// Create accessToken and Assign to Cookie
-				const accessToken = jwt.sign(
-					{ _id: user._id },
-					process.env.JWT_KEY
-				);
-				res.cookie('accessToken', accessToken);
+						if (!user.gender) {
+							res.redirect('/signin/preferences');
+						} else {
+							res.redirect('/');
+						}
+					})
+					.catch((err) => {
+						res.send(err.message);
+					});
+			} else {
+				User.findOne({ email: req.user._json.email })
+					.then((user) => {
+						// Create accessToken and Assign to Cookie
+						const accessToken = jwt.sign(
+							{ _id: user._id },
+							process.env.JWT_KEY
+						);
+						res.cookie('accessToken', accessToken);
 
-				if (!user.gender) {
-					res.redirect('/signin/preferences');
-				} else {
-					res.redirect('/');
-				}
-			})
-			.catch((err) => {
-				res.send(err.message);
-			});
-	} else {
-		User.findOne({ email: req.user._json.email })
-			.then((user) => {
-				// Create accessToken and Assign to Cookie
-				const accessToken = jwt.sign(
-					{ _id: user._id },
-					process.env.JWT_KEY
-				);
-				res.cookie('accessToken', accessToken);
-
-				if (!user.gender) {
-					res.redirect('/signin/preferences');
-				} else {
-					res.redirect('/');
-				}
-			})
-			.catch((err) => {
-				res.send(err.message);
-			});
-	}
+						if (!user.gender) {
+							res.redirect('/signin/preferences');
+						} else {
+							res.redirect('/');
+						}
+					})
+					.catch((err) => {
+						res.send(err.message);
+					});
+			}
+		}
+	);
 };
 
 // Get Login Page
