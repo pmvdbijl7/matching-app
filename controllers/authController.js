@@ -1,9 +1,11 @@
 const User = require('../models/User');
+const Genre = require('../models/Genre');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const {
 	registerValidation,
 	loginValidation,
+	preferencesValidation,
 } = require('./validationController');
 require('dotenv/config');
 const passport = require('passport');
@@ -150,15 +152,24 @@ const loginPost = async (req, res) => {
 
 // Get Preferences Page
 const preferencesGet = (req, res) => {
-	res.render('pages/auth/preferences', {
-		title: 'Preferences',
-		genders: ['Male', 'Female', 'Non-binary'],
-		interests: ['Men', 'Women', 'Everyone'],
+
+	Genre.find((err, genres) => {
+		res.render('pages/auth/preferences', {
+			title: 'Preferences',
+			genders: ['Male', 'Female', 'Non-binary'],
+			interests: ['Men', 'Women', 'Everyone'],
+			genres: genres
+		});
 	});
 };
 
 // Update Preferences
 const preferencesPost = (req, res) => {
+
+	// Validate Preferences Data
+	const { error } = preferencesValidation(req.body);
+	if (error) return res.status(400).send(error.details[0].message);
+
 	// Get Authenticated User
 	const authUser = req.user._id;
 
@@ -169,6 +180,7 @@ const preferencesPost = (req, res) => {
 		residence: req.body.residence,
 		interested_in: req.body.interested_in,
 		biography: req.body.biography,
+		genres: req.body.genres
 	})
 		.then((user) => {
 			res.redirect('/');

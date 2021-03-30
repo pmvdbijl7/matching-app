@@ -39,9 +39,21 @@
 							</div>
 						<% }) %>
 					</div>
+					
 					<div class="form-group">
 						<label for="biography">Biography</label>
 						<textarea id="biography" name="biography" required></textarea>
+					</div>
+
+					<div class="form-group">
+						<label for="genres">What are your favorite genres?</label>
+						<select name="genres" id="genres" multiple>
+							<% for(i=0; i < genres.length; i++){ %>
+								<option value="<%= genres[i]._id %>">
+									<%= genres[i].name %>
+								</option>
+								<% } %>
+						</select>
 					</div>
 
 					<input type="submit" value="Save Preferences">
