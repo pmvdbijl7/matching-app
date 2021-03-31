@@ -77,6 +77,37 @@ const createProfilePost = (req, res) => {
   User.findByIdAndUpdate(authUser, req.body).then(() => {
     User.findOne({ authUser }).then((result) => {
       res.redirect('/createprofile');
+
+// Maak asynch functie met forEach loop
+  // Zet onder functie let data = await functieNaam
+
+  // let movieArray = [];
+
+  // async function getMoviePosters() {
+  //   req.body.movies.forEach(async (movie) => {
+  //     let posters = await axios({
+  //       method: 'GET',
+  //       url: `http://www.omdbapi.com/?apikey=${process.env.API_KEY}&t=${movie}`,
+  //     })
+  //       .then((res) => {
+  //         console.log(res.data.Poster);
+  //         movieArray.push(res.data.Poster);
+  //         console.log(movieArray);
+  //       })
+  //       .catch((err) => {
+  //         console.log('error', err);
+  //       });
+  //   });
+  // }
+
+  // async function fillMovieArray() {
+  //   let data = await getMoviePosters();
+  // }
+
+  // fillMovieArray();
+
+
+
     });
   });
 };
