@@ -43,14 +43,13 @@ input[type=submit], button, .button {
     color: white;
 }
 
-form section {
-    padding-bottom: 25px;
+textarea {
+    width: 100%;
 }
 
-label, form p {
-    margin-top: 10px;
-    margin-bottom: 5px;
-    font-weight: 600;
+form section {
+    padding-bottom: 25px;
+    margin-left: 0px;
 }
 
 .radio-group {
@@ -62,6 +61,13 @@ label, form p {
     }
 }
 
-textarea {
-    width: 100%;
+label, form p {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.password p, .delete p {
+    padding-top: 100px;
+    margin-bottom: -75px;
 }

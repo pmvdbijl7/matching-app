@@ -55,76 +55,6 @@ header a {
   margin-bottom: -80px;
 }
 
-input[type=text], input[type=password], input[type=number], input[type=search], input[type=email], input[type=date], textarea, select {
-  border: none;
-  border-bottom: 1px solid black;
-  padding: 4px 10px;
-  outline: none;
-}
-
-input[type=radio] {
-  width: 20px;
-  height: 20px;
-  margin-right: 0.5rem;
-  margin-top: 12px;
-}
-
-input[type=text], label {
-  display: block;
-}
-
-input[type=number] {
-  max-width: 100px;
-}
-
-input[type=submit], button, .button {
-  padding: .6rem 4.7rem;
-  font-weight: 600;
-  border: none;
-  color: #171719;
-  background-color: #EDB530;
-  margin: 20px 0;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 10px;
-  font-size: inherit;
-  -webkit-box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2);
-  font-family: 'Montserrat', sans-serif;
-}
-
-.button {
-  padding: .6rem 6.5rem;
-  background-color: #af241d;
-  color: white;
-}
-
-form section {
-  padding-bottom: 25px;
-}
-
-label, form p {
-  margin-top: 10px;
-  margin-bottom: 5px;
-  font-weight: 600;
-}
-
-.radio-group {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.radio-group label {
-  margin-top: 12px;
-  font-weight: 400;
-  font-size: 0.9em;
-}
-
-textarea {
-  width: 100%;
-}
-
 .home {
   background-color: #171719;
   margin-bottom: -10px;
@@ -184,7 +114,7 @@ form input[type=submit] {
   font-weight: 300;
 }
 
-.account-item .profile {
+.account-item .viewProfile {
   position: absolute;
   margin-top: -5vh;
   right: 8vw;
@@ -194,42 +124,6 @@ form input[type=submit] {
   border: 2px solid #EDB530;
   padding: 3px;
   border-radius: 5px;
-}
-
-.myProfile {
-  background-color: #171719;
-  height: 100vh;
-  color: white;
-}
-
-.myProfile section {
-  padding-top: 100px;
-}
-
-.myProfile section img {
-  width: 70vw;
-  position: relative;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-.myProfile section h1 {
-  font-size: 1.8em;
-  margin-top: 10px;
-  font-weight: 600;
-  margin-bottom: 30px;
-}
-
-.myProfile section h2 {
-  font-size: 1.1em;
-  margin-top: -18px;
-  font-weight: 600;
-  margin-bottom: 30px;
-}
-
-.myProfile section p {
-  margin-top: 0px;
-  width: 70vw;
 }
 
 .matches {
@@ -250,51 +144,115 @@ form input[type=submit] {
   color: white;
 }
 
-.account-item {
-  margin-bottom: 10px;
-  border-radius: 10px;
-  background-color: #171719;
+input[type=text], input[type=password], input[type=number], input[type=search], input[type=email], input[type=date], textarea, select {
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 4px 10px;
+  outline: none;
 }
 
-.account-item a {
+input[type=radio] {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5rem;
+  margin-top: 12px;
+}
+
+input[type=text], label {
+  display: block;
+}
+
+input[type=number] {
+  max-width: 100px;
+}
+
+input[type=submit], button, .button {
+  padding: .6rem 4.7rem;
+  font-weight: 600;
+  border: none;
+  color: #171719;
+  background-color: #EDB530;
+  margin: 20px 0;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 10px;
+  font-size: inherit;
+  -webkit-box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.button {
+  padding: .6rem 6.5rem;
+  background-color: #af241d;
+  color: white;
+}
+
+textarea {
+  width: 100%;
+}
+
+form section {
+  padding-bottom: 25px;
+  margin-left: 0px;
+}
+
+.radio-group {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  text-decoration: none;
-  padding: 10px;
+}
+
+.radio-group label {
+  margin-top: 12px;
+  font-weight: 400;
+  font-size: 0.9em;
+}
+
+label, form p {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.password p, .delete p {
+  padding-top: 100px;
+  margin-bottom: -75px;
+}
+
+.profilePage {
+  background-color: #171719;
+  height: 100vh;
   color: white;
 }
 
-.account-item span {
-  font-size: 50px;
+.profilePage section {
+  padding-top: 100px;
 }
 
-.account-item div:first-of-type {
-  margin-right: 10px;
+.profilePage section img {
+  width: 70vw;
+  position: relative;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.account-item p {
-  margin: 0;
+.profilePage section h1 {
+  font-size: 1.8em;
+  margin-top: 10px;
+  font-weight: 600;
+  margin-bottom: 30px;
 }
 
-.account-item p:first-of-type {
-  font-size: 1.2rem;
+.profilePage section h2 {
+  font-size: 1.1em;
+  margin-top: -18px;
+  font-weight: 600;
+  margin-bottom: 30px;
 }
 
-.account-item p:last-of-type {
-  padding-top: 5px;
-  font-weight: 300;
-}
-
-.account-item .profile {
-  position: absolute;
-  margin-top: -5vh;
-  right: 8vw;
-  font-size: 0.8rem;
-  color: white;
-  text-decoration: none;
-  border: 2px solid #EDB530;
-  padding: 3px;
-  border-radius: 5px;
+.profilePage section p {
+  margin-top: 0px;
+  width: 70vw;
 }
 /*# sourceMappingURL=style.css.map */
