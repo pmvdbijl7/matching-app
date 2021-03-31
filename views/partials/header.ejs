@@ -7,7 +7,6 @@
         <a class="headerRight" href="<%= headerRight.path %>"><%= headerRight.text %></a>
     <% } %>
     <% if (typeof optionsRight=='object' && optionsRight){ %>
-            <button>Advanced</button>
             <%for(i=0; i < optionsRight.length; i++){ %>
                 <li><a href="<%= optionsRight[i].path %>"><%= optionsRight[i].text %></a></li>
             <% } %>

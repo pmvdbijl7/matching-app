@@ -44,7 +44,7 @@ To clone and run this application, you need [Git](https://git-scm.com/) and [Nod
     $ npm install
 
     # Create an .env file in the root of the project and fill it with your own MongoDB Atlas credentials (you need a MongoDB cluster and database):
-    DB_PASSWORD=yourClusterName
+    DB_PASSWORD=yourDatabasePassword
     DB_USERNAME=yourDatabaseName
     JWT_KEY=g4ag987dag99g1a9feg
 

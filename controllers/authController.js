@@ -1,9 +1,11 @@
 const User = require('../models/User');
+const Genre = require('../models/Genre');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const {
 	registerValidation,
 	loginValidation,
+	preferencesValidation,
 } = require('./validationController');
 require('dotenv/config');
 const passport = require('passport');
@@ -67,27 +69,55 @@ const registerPost = async (req, res) => {
 // Google Callback
 const googleCb = (req, res) => {
 	// Create New User
-	const user = new User({
-		name: req.user._json.given_name,
-		email: req.user._json.email,
-		password: null,
-	});
+	const isUser = User.findOne({ email: req.user._json.email }).then(
+		(isUser) => {
+			if (!isUser) {
+				const user = new User({
+					name: req.user._json.given_name,
+					email: req.user._json.email,
+					password: null,
+				});
 
-	user.save()
-		.then((user) => {
-			// Create accessToken and Assign to Cookie
-			const accessToken = jwt.sign(
-				{ _id: user._id },
-				process.env.JWT_KEY
-			);
-			res.cookie('accessToken', accessToken);
+				user.save()
+					.then((user) => {
+						// Create accessToken and Assign to Cookie
+						const accessToken = jwt.sign(
+							{ _id: user._id },
+							process.env.JWT_KEY
+						);
+						res.cookie('accessToken', accessToken);
 
-			// Redirect to Home
-			res.redirect('/');
-		})
-		.catch((err) => {
-			res.send(err.message);
-		});
+						if (!user.gender) {
+							res.redirect('/signin/preferences');
+						} else {
+							res.redirect('/');
+						}
+					})
+					.catch((err) => {
+						res.send(err.message);
+					});
+			} else {
+				User.findOne({ email: req.user._json.email })
+					.then((user) => {
+						// Create accessToken and Assign to Cookie
+						const accessToken = jwt.sign(
+							{ _id: user._id },
+							process.env.JWT_KEY
+						);
+						res.cookie('accessToken', accessToken);
+
+						if (!user.gender) {
+							res.redirect('/signin/preferences');
+						} else {
+							res.redirect('/');
+						}
+					})
+					.catch((err) => {
+						res.send(err.message);
+					});
+			}
+		}
+	);
 };
 
 // Get Login Page
@@ -122,15 +152,24 @@ const loginPost = async (req, res) => {
 
 // Get Preferences Page
 const preferencesGet = (req, res) => {
-	res.render('pages/auth/preferences', {
-		title: 'Preferences',
-		genders: ['Male', 'Female', 'Non-binary'],
-		interests: ['Men', 'Women', 'Everyone'],
+
+	Genre.find((err, genres) => {
+		res.render('pages/auth/preferences', {
+			title: 'Preferences',
+			genders: ['Male', 'Female', 'Non-binary'],
+			interests: ['Men', 'Women', 'Everyone'],
+			genres: genres
+		});
 	});
 };
 
 // Update Preferences
 const preferencesPost = (req, res) => {
+
+	// Validate Preferences Data
+	const { error } = preferencesValidation(req.body);
+	if (error) return res.status(400).send(error.details[0].message);
+
 	// Get Authenticated User
 	const authUser = req.user._id;
 
@@ -141,6 +180,7 @@ const preferencesPost = (req, res) => {
 		residence: req.body.residence,
 		interested_in: req.body.interested_in,
 		biography: req.body.biography,
+		genres: req.body.genres
 	})
 		.then((user) => {
 			res.redirect('/');

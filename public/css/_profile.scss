@@ -1,12 +1,12 @@
 @import "./variables";
 
-.myProfile {
+.profilePage {
     background-color: $mainDark;
     height: 100vh;
     color: white;
 }
 
-.myProfile section{
+.profilePage section{
     padding-top: 100px;
     img {
         width: 70vw;

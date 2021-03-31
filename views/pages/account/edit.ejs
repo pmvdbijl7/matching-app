@@ -3,11 +3,11 @@
     <body>
         <%- include('../../partials/header'); %>
             <main>
-                <div class="auth-container">
+                <section class="auth-container">
                     <h1>Edit</h1>
 
                     <form action="/account/edit" method="POST" enctype="multipart/form-data">
-                        <div class="form-group">
+                        <section>
                             <label for="profile_image">
                                 <% if (user.profile_image) { %>
                                     <img src="/uploads/<%= user.profile_image %>" alt="Profile image" width="100">
@@ -16,19 +16,19 @@
                                 <% } %>
                             </label>
                             <input type="file" name="profile_image" id="profile_image" accept="image/*" value="<%= user.profile_image %>">
-                        </div>
+                        </section>
 
-                        <div class="form-group">
+                        <section>
                             <label for="name">Name</label>
                             <input type="text" name="name" id="name" value="<%= user.name %>" required/>
-                        </div>
+                        </section>
 
-                        <div class="form-group">
+                        <section>
                             <label for="email">Email Address</label>
                             <input type="email" name="email" id="email" value="<%= user.email %>" required/>
-                        </div>
+                        </section>
 
-                        <div class="form-group">
+                        <section>
                             <p>Gender</p>
                             <%for(i=0; i < genders.length; i++){ %>
                                 <div class="radio-group">
@@ -38,16 +38,16 @@
                                     </label>
                                 </div>
                                 <% } %>
-                        </div>
-                        <div class="form-group">
+                        </section>
+                        <section>
                             <label for="birthdate">Birthdate</label>
                             <input type="date" id="birthdate" name="birthdate" min="18" max="130" class="inline" value="<%= user.birthdate.toISOString().substr(0, 10); %>" required>
-                        </div>
-                        <div class="form-group">
+                        </section>
+                        <section>
                             <label for="residence">Where do you live?</label>
                             <input type="search" id="residence" name="residence" value="<%= user.residence %>" required>
-                        </div>
-                        <div class="form-group">
+                        </section>
+                        <section>
                             <p>Interested in</p>
                             <% for(i=0; i < interests.length; i++){ %>
                                 <div class="radio-group">
@@ -57,35 +57,25 @@
                                     </label>
                                 </div>
                                 <% } %>
-                        </div>
-                        <div class="form-group">
+                        </section>
+                        <section>
                             <label for="biography">Biography</label>
                             <textarea id="biography" name="biography" required><%= user.biography %></textarea>
-                        </div>
-                        <!-- <div class="form-group">
-						<label for="genres">What are your favorite genres?</label>
-						<select name="genres" id="genres" multiple>
-							<%// for(i=0; i < genres.length; i++){ %>
-								<option value="<%//= genres[i] %>">
-									<%//= genres[i] %>
-								</option>
-								<%// } %>
-						</select>
-					</div> 
-					<div id="movie-list" class="form-group">
-						<label for="movies">What are your favorite movies?</label>
-						<input type="search" id="movies" name="movies">
-						<button id="add-movie" type="button">+</button>
-					</div>
-					<div id="serie-list" class="form-group">
-						<label for="series">What are your favorite series?</label>
-						<input type="search" id="series" name="series">
-						<button id="add-serie" type="button">+</button>
-					</div> -->
+                        </section>
+                        <section>
+                            <label for="genres">What are your favorite genres?</label>
+                            <select name="genres" id="genres" multiple>
+                                <% for(i=0; i < genres.length; i++){ %>
+                                    <option value="<%= genres[i]._id %>" <% if (user.genres.includes(genres[i]._id)) { %> selected <% } %>>
+                                            <%= genres[i].name %>
+                                    </option>
+                                <% } %>
+                            </select>
+                        </section>
                         <input type="submit" value="Save changes">
                     </form>
                     <a class="button" href="/account/profile">Cancel</a>
-                </div>
+                </section>
             </main>
             <script src="../js/script.js"></script>
     </body>

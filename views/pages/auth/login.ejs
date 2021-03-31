@@ -3,27 +3,29 @@
 	<body>
 		<%- include('../../partials/header'); %>
 			<main>
-				<div class="auth-container">
+				<section class="auth-container">
 					<h1>Login</h1>
 
 					<form action="/signin" method="POST">
-						<div class="form-group">
+						<section>
 							<label for="email">Email Address</label>
 							<input type="email" name="email" id="email" required/>
-						</div>
+						</section>
 
-						<div class="form-group">
+						<section>
 							<label for="password">Password</label>
 							<input type="password" name="password" id="password" required/>
-						</div>
+						</section>
 
-						<div class="form-group">
+						<section>
 							<input type="submit" value="Login">
-						</div>
+						</section>
 					</form>
 
+					<p>Or login with <a href="/google">Google</a></p>
+
 					<p>Don't have an account yet? <a href="/signup">Sign up</a></p>
-				</div>
+				</section>
 			</main>
 
 		<%- include('../../partials/scripts'); %>
