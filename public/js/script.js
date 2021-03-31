@@ -1,18 +1,3 @@
-// script file
-// const addMovieButton = document.querySelector('#add-movie');
-// const addSerieButton = document.querySelector('#add-serie');
-
-// //Adds a new serie or movie field on the Create and Edit pages for profiles
-// function addField(button, list, items) {
-//     const ListDiv = document.querySelector(list);
-//     const addedField = document.querySelector(items).cloneNode(true);
-//     addedField.value = "";
-//     ListDiv.insertBefore(addedField, button);
-// }
-
-// addMovieButton.addEventListener('click', () => { addField(addMovieButton,'#movie-list','#movies') });
-// addSerieButton.addEventListener('click', () => { addField(addSerieButton, '#serie-list', '#series') });
-
 const likeButton = document.querySelector('.like');
 
 function postLikeData(likeOrUnlike) {
@@ -21,7 +6,7 @@ function postLikeData(likeOrUnlike) {
     const pathname = new URL(url).pathname;
     const profileId = pathname.substring('/user/profile/'.length);
 
-    var xhttp = new XMLHttpRequest();
+    const xhttp = new XMLHttpRequest();
 
     
 
@@ -38,4 +23,6 @@ function postLikeData(likeOrUnlike) {
     }
 }
 
-likeButton.addEventListener('click', () => {postLikeData(likeButton.textContent)});
+likeButton.addEventListener('click', () => {
+    postLikeData(likeButton.textContent)
+});

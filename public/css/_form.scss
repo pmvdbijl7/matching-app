@@ -1,25 +1,10 @@
 @import "./variables";
 
-label, form p {
-    margin-top: 10px;
-    margin-bottom: 5px;
-    font-weight: 600;
-}
-
 input[type=text], input[type=password], input[type=number], input[type=search], input[type=email], input[type=date], textarea, select {
     border:none;
     border-bottom: 1px solid black;
     padding: 4px 10px;
     outline: none;
-}
-
-.radio-group {
-    display: flex;
-    label {
-        margin-top: 12px;
-        font-weight: 400;
-        font-size: 0.9em;
-    }
 }
 
 input[type=radio] {
@@ -29,7 +14,7 @@ input[type=radio] {
     margin-top: 12px;
 }
 
-input[type=text], form>div>label {
+input[type=text], label {
     display: block;
 }
 
@@ -62,11 +47,27 @@ textarea {
     width: 100%;
 }
 
-form div {
+form section {
     padding-bottom: 25px;
+    margin-left: 0px;
 }
 
-a.delete {
-    background-color: lightpink;
+.radio-group {
+    display: flex;
+    label {
+        margin-top: 12px;
+        font-weight: 400;
+        font-size: 0.9em;
+    }
 }
 
+label, form p {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.password p, .delete p {
+    padding-top: 100px;
+    margin-bottom: -75px;
+}

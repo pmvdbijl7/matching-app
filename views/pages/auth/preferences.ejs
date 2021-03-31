@@ -2,11 +2,11 @@
 	<body>
 		<%- include('../../partials/header'); %>
 		<main>
-			<div class="auth-container">
+			<section class="auth-container">
 				<h1>My Preferences</h1>
 
 				<form action="/signin/preferences" method="POST">
-					<div class="form-group">
+					<section>
 						<p>Gender</p>
 						<% genders.forEach((gender) => { %>
 							<div class="radio-group">
@@ -16,19 +16,19 @@
 								</label>
 							</div>
 						<% }) %>
-					</div>
+					</section>
 
-					<div class="form-group">
+					<section>
 						<label for="birthdate">Birthdate</label>
 						<input type="date" id="birthdate" name="birthdate" min="18" max="130" class="inline" required>
-					</div>
+					</section>
 
-					<div class="form-group">
+					<section>
 						<label for="residence">Where do you live?</label>
 						<input type="search" id="residence" name="residence" required>
-					</div>
+					</section>
 
-					<div class="form-group">
+					<section>
 						<p>Interested in</p>
 						<% interests.forEach((interest) => { %>
 							<div class="radio-group">
@@ -38,14 +38,14 @@
 								</label>
 							</div>
 						<% }) %>
-					</div>
+					<section>
 					
-					<div class="form-group">
+					<section>
 						<label for="biography">Biography</label>
 						<textarea id="biography" name="biography" required></textarea>
-					</div>
+					</section>
 
-					<div class="form-group">
+					<section>
 						<label for="genres">What are your favorite genres?</label>
 						<select name="genres" id="genres" multiple>
 							<% for(i=0; i < genres.length; i++){ %>
@@ -54,11 +54,11 @@
 								</option>
 								<% } %>
 						</select>
-					</div>
+					</section>
 
 					<input type="submit" value="Save Preferences">
 				</form>
-			</div>
+			</dsectioniv>
 		</main>
 		<script src="../js/script.js"></script>
 		</body>

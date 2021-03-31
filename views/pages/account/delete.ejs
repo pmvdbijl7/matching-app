@@ -2,18 +2,18 @@
 
     <body>
         <%- include('../../partials/header'); %>
-            <main>
-                <p>To delete your account, please confirm with your password</p>
+            <main class="delete">
+                <p>To delete your account, please confirm with your password.</p>
                 <form action="/account/delete" method="POST">
-                    <div class="form-group">
+                    <section>
                         <label for="password">Password</label>
                         <input type="password" name="password" id="password" required/>
-                    </div>
+                    </section>
 
-                    <div class="form-group">
+                    <section>
                         <label for="repeat_password">Repeat your password</label>
                         <input type="password" name="repeat_password" id="repeat_password" required/>
-                    </div>
+                    </section>
                     <input type="submit" value="Delete account">
                 </form>
             </main>
