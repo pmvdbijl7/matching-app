@@ -31,7 +31,7 @@ const editGet = (req, res) => {
 		res.render('pages/account/edit', {
 			title: 'Edit your profile',
 			user: user.toJSON(),
-			headerLeft: { path: '/account/edit-password', text: 'Password' },
+			headerLeft: { path: '/account/edit-password', text: 'Edit Password' },
 			headerRight: { path: '/account/delete', text: 'Delete' },
 			interests: ['Men', 'Women', 'Everyone'],
 			genders: ['Male', 'Female', 'Non-binary'],
