@@ -1,11 +1,13 @@
 const multer = require('multer');
 const path = require('path');
 
-// Set Uplaods Storage Engine
+// Set Uploads Storage Engine
 const uploadStorage = multer.diskStorage({
+	// Determine uploads save
 	destination: (req, file, cb) => {
 		cb(null, 'public/uploads');
 	},
+	// Determine file name
 	filename: (req, file, cb) => {
 		cb(
 			null,
