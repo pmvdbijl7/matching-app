@@ -4,37 +4,37 @@
 		<%- include('../../partials/header'); %>
 
 			<main>
-				<div class="auth-container">
+				<section class="auth-container">
 					<h1>Create an Account</h1>
 
 					<form action="/signup" method="POST">
-						<div class="form-group">
+						<div>
 							<label for="name">Name</label>
 							<input type="text" name="name" id="name" required>
 						</div>
 
-						<div class="form-group">
+						<div>
 							<label for="email">Email Address</label>
 							<input type="email" name="email" id="email" required>
 						</div>
 
-						<div class="form-group">
+						<div>
 							<label for="password">Password</label>
 							<input type="password" name="password" id="password" required>
 						</div>
 
-						<div class="form-group">
+						<div>
 							<label for="password_repeat">Repeat Password</label>
 							<input type="password" name="password_repeat" id="password_repeat" required>
 						</div>
 
-						<div class="form-group">
+						<div>
 							<input type="submit" value="Create Account">
 						</div>
 					</form>
 
 					<p>Already have an account? <a href="/signin">Sign In</a></p>
-				</div>
+				</section>
 			</main>
 
 	</body>
