@@ -6,7 +6,7 @@ function postLikeData(likeOrUnlike) {
     const pathname = new URL(url).pathname;
     const profileId = pathname.substring('/user/profile/'.length);
 
-    var xhttp = new XMLHttpRequest();
+    const xhttp = new XMLHttpRequest();
 
     
 
@@ -23,4 +23,6 @@ function postLikeData(likeOrUnlike) {
     }
 }
 
-likeButton.addEventListener('click', () => {postLikeData(likeButton.textContent)});
+likeButton.addEventListener('click', () => {
+    postLikeData(likeButton.textContent)
+});
