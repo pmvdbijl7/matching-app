@@ -2,6 +2,7 @@ const User = require('../models/User');
 const Genre = require('../models/Genre');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const axios = require('axios');
 const {
   registerValidation,
   loginValidation,
@@ -166,7 +167,7 @@ const preferencesGet = (req, res) => {
 };
 
 // Update Preferences
-const preferencesPost = (req, res) => {
+const preferencesPost = async (req, res) => {
   // Validate Preferences Data
   const { error } = preferencesValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);
@@ -183,6 +184,30 @@ const preferencesPost = (req, res) => {
     biography: req.body.biography,
     movies: req.body.movies,
     genres: req.body.genres,
+  });
+
+  let movieArray = [];
+
+  async function getMoviePosters() {
+    req.body.movies.forEach(async (movie) => {
+      let posters = await axios({
+        method: 'GET',
+        url: `http://www.omdbapi.com/?apikey=${process.env.API_KEY}&t=${movie}`,
+      })
+        .then((res) => {
+          console.log(res.data.Poster);
+          movieArray.push(res.data.Poster);
+        })
+        .catch((err) => {
+          console.log('error', err);
+        });
+    });
+  }
+
+  let data = await getMoviePosters();
+
+  User.findByIdAndUpdate(authUser, {
+    posters: movieArray,
   })
     .then((user) => {
       res.redirect('/');
