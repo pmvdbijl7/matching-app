@@ -61,6 +61,9 @@ const userSchema = new mongoose.Schema(
     posters: {
       type: String,
     },
+    plot: {
+      type: String,
+    },
     series: [
       {
         type: mongoose.Schema.Types.ObjectId,

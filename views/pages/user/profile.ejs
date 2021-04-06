@@ -29,6 +29,7 @@
                         <p><%= user.biography %></p>
                         <p>My favorite movie is: <%= user.movies %></p>
                         <img class="movieposter" src=<%= user.posters %> alt="The poster for  <%= user.movies %>"/>
+                        <p class="movieplot"><%= user.plot %> </p>
 
                         <% if (authUser.liked_profiles.includes(user._id.toString())) { %>
                             <button class="like">unlike</button>

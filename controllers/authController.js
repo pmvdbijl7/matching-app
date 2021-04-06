@@ -187,6 +187,19 @@ const preferencesPost = async (req, res) => {
       console.log('error', err);
     });
 
+  let plot;
+
+  let plots = await axios({
+    method: 'GET',
+    url: `http://www.omdbapi.com/?apikey=${process.env.API_KEY}&t=${req.body.movies}`,
+  })
+    .then((res) => {
+      plot = res.data.Plot;
+    })
+    .catch((err) => {
+      console.log('error', err);
+    });
+
   // Update User
   User.findByIdAndUpdate(authUser, {
     gender: req.body.gender,
@@ -196,6 +209,7 @@ const preferencesPost = async (req, res) => {
     biography: req.body.biography,
     movies: req.body.movies,
     posters: poster,
+    plot: plot,
     genres: req.body.genres,
   })
     .then((user) => {

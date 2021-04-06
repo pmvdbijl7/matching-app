@@ -29,6 +29,7 @@ const preferencesValidation = (data) => {
     biography: Joi.string().max(1024),
     movies: Joi.string(),
     poster: Joi.string(),
+    plot: Joi.string(),
     genres: Joi.string(),
   });
 
@@ -45,6 +46,10 @@ const editValidation = (data) => {
     interested_in: Joi.string().required(),
     biography: Joi.string().max(1024),
     genres: Joi.array().items(Joi.string()),
+    movies: Joi.string(),
+    poster: Joi.string(),
+    plot: Joi.string(),
+    genres: Joi.string(),
   });
 
   return schema.validate(data);
