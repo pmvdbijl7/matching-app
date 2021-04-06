@@ -74,7 +74,7 @@ form fieldset {
   color: white;
 }
 
-form input[type=submit] {
+form input[type='submit'] {
   margin-bottom: -3px;
 }
 
@@ -110,14 +110,13 @@ form input[type=submit] {
 }
 
 .account-item p:last-of-type {
-  padding-top: 5px;
   font-weight: 300;
 }
 
 .account-item .viewProfile {
   position: absolute;
-  margin-top: -5vh;
-  right: 8vw;
+  margin-top: -10vh;
+  right: 4vw;
   font-size: 0.8rem;
   color: white;
   text-decoration: none;
@@ -222,7 +221,6 @@ label, form p {
 
 .profilePage {
   background-color: #171719;
-  height: 100vh;
   color: white;
 }
 
@@ -254,5 +252,9 @@ label, form p {
 .profilePage section p {
   margin-top: 0px;
   width: 70vw;
+}
+
+.profilePage section img.movieposter {
+  width: 100px;
 }
 /*# sourceMappingURL=style.css.map */

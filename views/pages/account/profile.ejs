@@ -27,7 +27,8 @@
                     <h2>Lives in <%= user.residence %></h2>
                     <p><%= user.biography %></p>
                     <p>My favorite movie is: <%= user.movies %></p>
-                    <img src="<%= user.posters %>" />
+                    <img class="movieposter" src="<%= user.posters %>" alt="The poster for  <%= user.movies %>"/>
+                    <p class="movieplot"><%= user.plot %> </p>
                 </section>
             </main>
     </body>
