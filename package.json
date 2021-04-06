@@ -1,40 +1,41 @@
 {
-	"name": "matching-app",
-	"version": "1.0.0",
-	"description": "An app where users can meet other users based on movies and series interests.",
-	"main": "app.js",
-	"scripts": {
-		"test": "nodemon app.js",
-		"dev": "nodemon app.js",
-		"start": "node app.js"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/pmvdbijl7/matching-app.git"
-	},
-	"author": "Christiaan Braun, Aron Pelgrim, Joris Meester, Patrick van der Bijl",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/pmvdbijl7/matching-app/issues"
-	},
-	"homepage": "https://github.com/pmvdbijl7/matching-app#readme",
-	"devDependencies": {
-		"dotenv": "^8.2.0",
-		"eslint": "^7.23.0",
-		"nodemon": "^2.0.7"
-	},
-	"dependencies": {
-		"bcrypt": "^5.0.1",
-		"cookie-parser": "^1.4.5",
-		"ejs": "^3.1.6",
-		"express": "^4.17.1",
-		"joi": "^17.4.0",
-		"jsonwebtoken": "^8.5.1",
-		"mongoose": "^5.12.0",
-		"mongoose-unique-validator": "^2.0.3",
-		"multer": "^1.4.2",
-		"passport": "^0.4.1",
-		"passport-google-oauth20": "^2.0.0",
-		"passport-local": "^1.0.0"
-	}
+  "name": "matching-app",
+  "version": "1.0.0",
+  "description": "An app where users can meet other users based on movies and series interests.",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon app.js",
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pmvdbijl7/matching-app.git"
+  },
+  "author": "Christiaan Braun, Aron Pelgrim, Joris Meester, Patrick van der Bijl",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pmvdbijl7/matching-app/issues"
+  },
+  "homepage": "https://github.com/pmvdbijl7/matching-app#readme",
+  "devDependencies": {
+    "eslint": "^7.23.0",
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "joi": "^17.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.0",
+    "mongoose-unique-validator": "^2.0.3",
+    "multer": "^1.4.2",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-local": "^1.0.0"
+  }
 }
