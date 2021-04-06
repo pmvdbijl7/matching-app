@@ -56,10 +56,10 @@ const userSchema = new mongoose.Schema(
     // 	},
     // ],
     movies: {
-      type: Array,
+      type: String,
     },
     posters: {
-      type: Array,
+      type: String,
     },
     series: [
       {

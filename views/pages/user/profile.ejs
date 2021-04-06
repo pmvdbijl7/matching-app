@@ -27,6 +27,8 @@
                         <h2>Interested in <%= user.interested_in %></h2> 
                         <h2>Lives in <%= user.residence %></h2>
                         <p><%= user.biography %></p>
+                        <p>My favorite movie is: <%= user.movie %></p>
+                        <img src=<%= user.posters %> />
 
                         <% if (authUser.liked_profiles.includes(user._id.toString())) { %>
                             <button class="like">unlike</button>

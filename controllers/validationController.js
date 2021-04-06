@@ -27,8 +27,8 @@ const preferencesValidation = (data) => {
     residence: Joi.string().required(),
     interested_in: Joi.string().required(),
     biography: Joi.string().max(1024),
-    movies: Joi.array().items(Joi.string()).single(),
-    posters: Joi.array().items(Joi.string()).single(),
+    movies: Joi.string(),
+    poster: Joi.string(),
     genres: Joi.string(),
   });
 

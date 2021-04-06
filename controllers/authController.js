@@ -55,7 +55,6 @@ const registerPost = async (req, res) => {
     name: req.body.name,
     email: req.body.email,
     password: hashedPassword,
-    movies: undefined,
   });
 
   user
@@ -175,6 +174,19 @@ const preferencesPost = async (req, res) => {
   // Get Authenticated User
   const authUser = req.user._id;
 
+  let poster;
+
+  let posters = await axios({
+    method: 'GET',
+    url: `http://www.omdbapi.com/?apikey=${process.env.API_KEY}&t=${req.body.movies}`,
+  })
+    .then((res) => {
+      poster = res.data.Poster;
+    })
+    .catch((err) => {
+      console.log('error', err);
+    });
+
   // Update User
   User.findByIdAndUpdate(authUser, {
     gender: req.body.gender,
@@ -183,31 +195,8 @@ const preferencesPost = async (req, res) => {
     interested_in: req.body.interested_in,
     biography: req.body.biography,
     movies: req.body.movies,
+    posters: poster,
     genres: req.body.genres,
-  });
-
-  let movieArray = [];
-
-  async function getMoviePosters() {
-    req.body.movies.forEach(async (movie) => {
-      let posters = await axios({
-        method: 'GET',
-        url: `http://www.omdbapi.com/?apikey=${process.env.API_KEY}&t=${movie}`,
-      })
-        .then((res) => {
-          console.log(res.data.Poster);
-          movieArray.push(res.data.Poster);
-        })
-        .catch((err) => {
-          console.log('error', err);
-        });
-    });
-  }
-
-  let data = await getMoviePosters();
-
-  User.findByIdAndUpdate(authUser, {
-    posters: movieArray,
   })
     .then((user) => {
       res.redirect('/');
