@@ -3,6 +3,7 @@
 .profilePage {
   background-color: $mainDark;
   color: white;
+  height: 120vh;
 }
 
 .profilePage section {
@@ -25,10 +26,26 @@
     margin-bottom: 30px;
   }
   p {
-    margin-top: 0px;
+    margin-top: 10px;
     width: 70vw;
+  }
+  p:nth-of-type(2) {
+    margin-bottom: 10px;
   }
   img.movieposter {
     width: 100px;
+    display: inline;
+    position: relative;
+  }
+  p:last-of-type {
+    margin: 0 0 0 5px;
+    display: inline;
+    position: absolute;
+    width: 230px;
+  }
+  button:last-of-type {
+    position: absolute;
+    bottom: -130px;
+    left: 85px;
   }
 }

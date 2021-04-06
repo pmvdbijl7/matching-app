@@ -222,6 +222,7 @@ label, form p {
 .profilePage {
   background-color: #171719;
   color: white;
+  height: 120vh;
 }
 
 .profilePage section {
@@ -250,11 +251,30 @@ label, form p {
 }
 
 .profilePage section p {
-  margin-top: 0px;
+  margin-top: 10px;
   width: 70vw;
+}
+
+.profilePage section p:nth-of-type(2) {
+  margin-bottom: 10px;
 }
 
 .profilePage section img.movieposter {
   width: 100px;
+  display: inline;
+  position: relative;
+}
+
+.profilePage section p:last-of-type {
+  margin: 0 0 0 5px;
+  display: inline;
+  position: absolute;
+  width: 230px;
+}
+
+.profilePage section button:last-of-type {
+  position: absolute;
+  bottom: -130px;
+  left: 85px;
 }
 /*# sourceMappingURL=style.css.map */
